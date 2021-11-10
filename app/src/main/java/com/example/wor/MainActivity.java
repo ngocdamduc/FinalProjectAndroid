@@ -8,12 +8,10 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton mStrengthFAB;
     private FloatingActionButton mCardioFAB;
     private BottomNavigationView mBottomNav;
-    // Navigation fields
-    private NavController mNavController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         // Close fab submenus initially
         closeSubMenusFab();
         //Set up Bottom Nav
-        mNavController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        // Navigation fields
+        NavController mNavController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(mBottomNav, mNavController);
         mNavController.addOnDestinationChangedListener((@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) ->{
             if (destination.getId() == R.id.navigation_to_workout_today || destination.getId() == R.id.navigation_to_workout_another_day){
@@ -110,11 +107,6 @@ public class MainActivity extends AppCompatActivity {
         mBottomNav.clearAnimation();
         mBottomNav.animate().translationY(0).setDuration(300);
     }
-
-    public NavController getNavController() {
-        return mNavController;
-    }
-
     // Closes FAB submenus
     private void closeSubMenusFab(){
         mCalisthenicFAB.startAnimation(fab_close);
@@ -128,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
         mStrengthFAB.setClickable(false);
         mFabExpanded = false;
     }
-
     // Opens FAB submenus
     private void openSubMenusFab(){
         mCalisthenicFAB.startAnimation(fab_open);
