@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sailor_blue">#2980b9</color>
+    <color name="evening_blue">#2980b9</color>
+    <color name="reply_orange">#F9AA33</color>
+    <color name="coconut_milk">#F0EDE5</color>
+    <color name="dark_gray">#121212</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="eclipse">#2980b9</color>
+</resources>

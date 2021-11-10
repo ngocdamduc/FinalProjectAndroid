@@ -1,0 +1,38 @@
+<resources>
+    <!-- Main Activity - General -->
+    <string name="logo_image_description">Image of a workout mangament.</string>
+    <string name="app_name">WOR-Workout Managemnent</string>
+    <string name="workout_today">Workout</string>
+    <string name="stats">Stats</string>
+    <string name="calendar">Calendar</string>
+    <!-- Workout Today Fragment -->
+    <string name="workout_image_description">Image of an apple and a checklist.</string>
+    <string name="exercise_image_description">Image of a type of exercise.</string>
+    <string name="workout_instruction">Add a calisthenic, cardio, or strength\nexercise for the current day.</string>
+    <string name="app_name_abr">WOR</string>
+    <!-- Stats Fragment -->
+    <string name="body_weight">Weight</string>
+    <string name="body_fat">Body Fat</string>
+    <string name="update">Update</string>
+    <string name="no_data">No data points</string>
+    <string name="none">None</string>
+    <string name="update_stat_title">Update body stats: </string>
+    <string name="body_weight_w_units">Body Weight (lbs)</string>
+    <string name="weight_w_units">Weight (lbs)</string>
+    <string name="body_fat_w_units">Body Fat (%)</string>
+    <!-- Calendar Fragment -->
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+    <!-- Workout Another Day Fragment -->
+    <string name="workout_another_day">Workout Another Day</string>
+    <!-- Floating Button -->
+    <string name="calisthenics">calisthenics</string>
+    <string name="cardio">cardio</string>
+    <string name="strength">strength</string>
+    <string name="add">add</string>
+</resources>

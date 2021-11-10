@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/gray_grid_background.xml" value="0.25025641025641027" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_calendar.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_calistenics_session.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_cardio_session.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_fitjournal_outline.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_stats.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_strength_session.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_workout.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_workout_instructions.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/today_grid_background.xml" value="0.25025641025641027" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/today_grid_background2.xml" value="0.25025641025641027" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/white_grid_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_legend.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_lengend.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calendar.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_stats.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_another_day.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_today.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_completed_exercise.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/regular_workout_dot.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
