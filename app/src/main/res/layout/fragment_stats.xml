@@ -226,7 +226,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="2dp"
                         android:gravity="start"
-                        android:text="@string/body_fat_w_units"
+                        android:text="@string/weight_w_units"
                         android:textAppearance="@style/open_sans_body2" />
 
                     <View

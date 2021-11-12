@@ -31,7 +31,7 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
-    private Set<LocalDate> mWorkoutDates = new HashSet<>();
+    private final Set<LocalDate> mWorkoutDates = new HashSet<>();
 
     // UI fields
     private CalendarView mCalendarView;
@@ -64,9 +64,9 @@ public class CalendarFragment extends Fragment {
 
             // Fields
             private CalendarDay mCalendarDay;
-            private TextView mCalendarDayTV;
-            private View mCalendarDotV;
-            private FrameLayout mCalendarDayBackgroundFL;
+            private final TextView mCalendarDayTV;
+            private final View mCalendarDotV;
+            private final FrameLayout mCalendarDayBackgroundFL;
 
             private DayViewContainer(@NonNull View view) {
                 super(view);
@@ -121,7 +121,5 @@ public class CalendarFragment extends Fragment {
         });
         return root;
     }
-
-
     // Other methods
 }

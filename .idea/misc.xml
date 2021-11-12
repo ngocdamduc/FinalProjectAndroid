@@ -25,10 +25,17 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_legend.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_lengend.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calendar.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calisthenics_session.xml" value="0.2" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_cardio_session.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_favourite.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_search_exercise.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_stats.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_strength_session.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_another_day.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_today.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_cardio_session.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_completed_exercise.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_session_set.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/regular_workout_dot.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>

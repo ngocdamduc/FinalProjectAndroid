@@ -17,9 +17,9 @@
     <string name="no_data">No data points</string>
     <string name="none">None</string>
     <string name="update_stat_title">Update body stats: </string>
-    <string name="body_weight_w_units">Body Weight (lbs)</string>
-    <string name="weight_w_units">Weight (lbs)</string>
-    <string name="body_fat_w_units">Body Fat (%)</string>
+    <string name="body_weight_w_units">Body Weight (kg)</string>
+    <string name="weight_w_units">Weight (kg)</string>
+    <string name="Height">Height (cm)</string>
     <!-- Calendar Fragment -->
     <string name="sun">SUN</string>
     <string name="mon">MON</string>
@@ -28,6 +28,19 @@
     <string name="thu">THU</string>
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
+    <!-- Cardio Fragment -->
+    <string name="cardio_session">Cardio</string>
+    <string name="duration">Duration (m)</string>
+    <string name="intensity">Intensity (s)</string>
+    <string name="new_session">New Session</string>
+    <!-- Strength Fragment -->
+    <string name="strength_session">Strength</string>
+    <string name="set">Set</string>
+    <string name="rep">Rep(s)</string>
+    <string name="Kilogram">kg</string>
+    <string name="new_set">New Set</string>
+    <!-- Session Fragment -->
+    <string name="session">Session</string>
     <!-- Workout Another Day Fragment -->
     <string name="workout_another_day">Workout Another Day</string>
     <!-- Floating Button -->
@@ -35,4 +48,11 @@
     <string name="cardio">cardio</string>
     <string name="strength">strength</string>
     <string name="add">add</string>
+    <!-- Miscellaneous -->
+    <string name="x">"x"</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="search">Search</string>
+    <string name="toast_error_message">Fields cannot be empty.</string>
 </resources>
