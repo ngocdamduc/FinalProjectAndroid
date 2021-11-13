@@ -18,6 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class MainActivity extends AppCompatActivity {
+    // Static fields
+    public static final String EXERCISE_INFO = "exercise_info_key";
+    public static final String STAT_INFO = "stat_info_key";
+    public static final String DATE_INFO = "date_info_key";
+    public static final int EMPTY = -1;
     // Fab state fields
     private boolean mFabVisible;
     private boolean mFabExpanded;
