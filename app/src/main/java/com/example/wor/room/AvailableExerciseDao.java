@@ -7,11 +7,11 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Update;
 
 @Dao
-public interface CompletedExerciseDao {
+public interface AvailableExerciseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(CompletedExerciseItem completedExerciseItem);
+    void insert(AvailableExerciseDao availableExerciseItem);
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    void update(CompletedExerciseItem completedExerciseItem);
+    void update(AvailableExerciseDao availableExerciseItem);
     @Delete
-    void delete(CompletedExerciseItem completedExerciseItem);
+    void delete(AvailableExerciseDao availableExerciseItem);
 }
