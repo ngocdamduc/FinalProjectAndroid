@@ -1,110 +1,89 @@
 package com.example.wor.room;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import org.threeten.bp.LocalDate;
-
-import java.util.List;
-
-@Entity(tableName = "availavle_exercise_table")
+@Entity(tableName = "available_exercise_table")
 public class AvailableExerciseItem {
 
-    @PrimaryKey(autoGenerate = true)
-    private int mId; // Look into this later -> Can't find getter for mId
+    // Fields
     @ColumnInfo(name = "exercise_type")
     private ExerciseType mExerciseType;
+
+    @PrimaryKey
+    @NonNull
     @ColumnInfo(name = "exercise_name")
-    private String mExerciseName;
-    @ColumnInfo(name = "exercise_date")
-    private org.threeten.bp.LocalDate mExerciseDate;
-    @ColumnInfo(name = "list_of_session")
-    private List<Session> mListOfSessions;
-    @ColumnInfo(name = "note")
-    private String mNote;
+    private String mExerciseName = "";
+
+    @ColumnInfo(name = "favorite")
+    private boolean mFavorite;
+
+    @ColumnInfo(name = "custom")
+    private boolean mCustom;
+
     @Ignore
     private boolean mIsChecked;
 
-    //Empty constructor
-    public AvailableExerciseItem() {};
+    // Empty constructor
+    public AvailableExerciseItem() {
+    }
 
-    //constructor to available exercise
-    public AvailableExerciseItem(ExerciseType type, String exerciseName, LocalDate exerciseDate, List<Session> listOfSessions, String note){
+    // General constructor for available exercise item
+    public AvailableExerciseItem(ExerciseType type, @NonNull String exerciseName, boolean favorite, boolean custom) {
         mExerciseType = type;
         mExerciseName = exerciseName;
-        mExerciseDate = exerciseDate;
-        mListOfSessions = listOfSessions;
-        mNote = note;
+        mFavorite = favorite;
+        mCustom = custom;
         mIsChecked = false;
     }
 
-    public  AvailableExerciseItem(CompletedExerciseItem anotherItem){
-        mId = anotherItem.getId();
-        mExerciseType = anotherItem.getExerciseType();
-        mExerciseName = anotherItem.getExerciseName();
-        mExerciseDate = anotherItem.getExerciseDate();
-        mListOfSessions = anotherItem.getListOfSessions();
-        mNote = anotherItem.getNote();
-        mIsChecked = anotherItem.IsChecked();
+    // Copy constructor
+    public AvailableExerciseItem(AvailableExerciseItem anotherItem) {
+        mExerciseType = anotherItem.getMExerciseType();
+        mExerciseName = anotherItem.getMExerciseName();
+        mFavorite = anotherItem.isFavorite();
+        mCustom = anotherItem.isCustom();
+        mIsChecked = anotherItem.isChecked();
     }
 
-    //getter and setter
-    public int getId() {
-        return mId;
-    }
-
-    public void setId(int mId) {
-        this.mId = mId;
-    }
-
-    public ExerciseType getExerciseType() {
+    // Getters and setters for fields
+    ExerciseType getMExerciseType() {
         return mExerciseType;
     }
 
-    public void setExerciseType(ExerciseType mExerciseType) {
-        this.mExerciseType = mExerciseType;
+    public void setMExerciseType(ExerciseType exerciseType) {
+        this.mExerciseType = exerciseType;
     }
 
-    public String getExerciseName() {
+    public void setMExerciseName(String exerciseName) {
+        this.mExerciseName = exerciseName;
+    }
+
+    public String getMExerciseName() {
         return mExerciseName;
     }
 
-    public void setExerciseName(String mExerciseName) {
-        this.mExerciseName = mExerciseName;
+    public boolean isFavorite() {
+        return mFavorite;
     }
 
-    public LocalDate getExerciseDate() {
-        return mExerciseDate;
+    public void setFavorite(boolean favorite) {
+        mFavorite = favorite;
     }
 
-    public void setExerciseDate(LocalDate mExerciseDate) {
-        this.mExerciseDate = mExerciseDate;
+    public boolean isCustom() {
+        return mCustom;
     }
+    public void setCustom(boolean custom) { mCustom = custom; }
 
-    public List<Session> getListOfSessions() {
-        return mListOfSessions;
-    }
-
-    public void setListOfSessions(List<Session> mListOfSessions) {
-        this.mListOfSessions = mListOfSessions;
-    }
-
-    public String getNote() {
-        return mNote;
-    }
-
-    public void setNote(String mNote) {
-        this.mNote = mNote;
-    }
-
-    public boolean isIsChecked() {
+    public boolean isChecked() {
         return mIsChecked;
     }
 
-    public void setIsChecked(boolean mIsChecked) {
-        this.mIsChecked = mIsChecked;
+    public void setChecked(boolean isChecked) {
+        mIsChecked = isChecked;
     }
-
 }

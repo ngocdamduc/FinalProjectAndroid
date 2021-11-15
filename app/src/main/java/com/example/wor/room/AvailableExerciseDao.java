@@ -10,8 +10,11 @@ import androidx.room.Update;
 public interface AvailableExerciseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(AvailableExerciseDao availableExerciseItem);
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(AvailableExerciseDao availableExerciseItem);
+
     @Delete
     void delete(AvailableExerciseDao availableExerciseItem);
+
 }

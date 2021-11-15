@@ -27,7 +27,7 @@ public class CompletedExerciseItem {
     private boolean mIsChecked;
     //Empty Constructor
     public CompletedExerciseItem(){}
-    //Constructor for completed Exercises
+    //Constructor for   completed Exercises
     public CompletedExerciseItem(ExerciseType type, String exerciseName, LocalDate exerciseDate, List<Session> listOfSessions, String note){
         mExerciseType = type;
         mExerciseName = exerciseName;
