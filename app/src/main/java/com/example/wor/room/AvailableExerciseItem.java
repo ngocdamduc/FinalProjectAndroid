@@ -57,36 +57,28 @@ public class AvailableExerciseItem {
     ExerciseType getExerciseType() {
         return mExerciseType;
     }
-
     public void setExerciseType(ExerciseType exerciseType) {
         this.mExerciseType = exerciseType;
     }
-
     public void setExerciseName(String exerciseName) {
         this.mExerciseName = exerciseName;
     }
-
     public String getExerciseName() {
         return mExerciseName;
     }
-
     public boolean isFavorite() {
         return mFavorite;
     }
-
     public void setFavorite(boolean favorite) {
         mFavorite = favorite;
     }
-
     public boolean isCustom() {
         return mCustom;
     }
     public void setCustom(boolean custom) { mCustom = custom; }
-
     public boolean isChecked() {
         return mIsChecked;
     }
-
     public void setChecked(boolean isChecked) {
         mIsChecked = isChecked;
     }

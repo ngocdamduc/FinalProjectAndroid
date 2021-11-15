@@ -4,11 +4,11 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-
 import com.example.wor.room.AvailableExerciseDao;
 import com.example.wor.room.AvailableExerciseItem;
 import com.example.wor.room.CompletedExerciseDao;
 import com.example.wor.room.CompletedExerciseItem;
+import com.example.wor.room.ExerciseType;
 import com.example.wor.room.WORDatabase;
 
 import org.threeten.bp.LocalDate;
@@ -16,22 +16,108 @@ import org.threeten.bp.LocalDate;
 import java.util.List;
 
 public class ExerciseRepository {
-    //Fields
-    private CompletedExerciseDao mCompletedExerciseDao;
-    private AvailableExerciseDao mAvailableExerciseDao;
 
-    private  LiveData<List<AvailableExerciseItem>> mAllAvailableExercise;
+    // Fields
+    private AvailableExerciseDao mAvailableExerciseDao;
+    private CompletedExerciseDao mCompletedExerciseDao;
     private LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
 
     // Constructor
     public ExerciseRepository(Application application) {
         WORDatabase database = WORDatabase.getInstance(application);
-        //complete
+        mAvailableExerciseDao = database.availableExerciseDao();
         mCompletedExerciseDao = database.completedExerciseDao();
         mAllCompletedExercises = mCompletedExerciseDao.getAllCompletedExercises();
-        //available
-        mAvailableExerciseDao = database.availableExerciseDao();
-        mAllAvailableExercise = mAvailableExerciseDao.getAllAvailableExercises();
+    }
+
+    // Methods for AvailableExerciseDao
+    public void insert(AvailableExerciseItem availableExerciseItem) {
+        new InsertAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+    }
+
+    public void update(AvailableExerciseItem availableExerciseItem) {
+        new UpdateAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+    }
+
+    public void delete(AvailableExerciseItem availableExerciseItem) {
+        new DeleteAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+    }
+
+    public void deleteAllAvailableExercises() {
+        new DeleteAllAvailableExerciseAsyncTask(mAvailableExerciseDao).execute();
+    }
+
+    public LiveData<List<AvailableExerciseItem>> getAllCustomAvailableExercise(boolean custom, ExerciseType exerciseType) {
+        return mAvailableExerciseDao.getAllCustomAvailableExercise(custom, exerciseType);
+    }
+
+    public LiveData<List<AvailableExerciseItem>> getAllAvailableFavoriteExercise(boolean favorite, ExerciseType exerciseType) {
+        return mAvailableExerciseDao.getAllFavoriteAvailableExercise(favorite, exerciseType);
+    }
+
+    public LiveData<List<AvailableExerciseItem>> getAllAvailableExercises(ExerciseType exerciseType) {
+        return mAvailableExerciseDao.getAllAvailableExercises(exerciseType);
+    }
+
+    // AsyncTasks for AvailableExerciseItem
+    private static class InsertAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private InsertAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            availableExerciseDao.insert(availableExerciseItems[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private UpdateAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            availableExerciseDao.update(availableExerciseItems[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private DeleteAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            availableExerciseDao.delete(availableExerciseItems[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAllAvailableExerciseAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private DeleteAllAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            availableExerciseDao.deleteAllAvailableExercises();
+            return null;
+        }
     }
 
     // Methods for CompletedExerciseDao
@@ -54,7 +140,12 @@ public class ExerciseRepository {
     public void deleteAllCompletedExercises() {
         new DeleteAllCompletedExerciseAsyncTask(mCompletedExerciseDao).execute();
     }
+
     public LiveData<List<CompletedExerciseItem>> getAllCompletedExerciseByDate(LocalDate date) { return mCompletedExerciseDao.getCompletedExerciseByDate(date); }
+
+    public LiveData<List<CompletedExerciseItem>> getAllCompletedExercises() {
+        return mAllCompletedExercises;
+    }
 
     // AsyncTasks for Completed Exercise Item
     private static class InsertCompletedExerciseAsyncTask extends AsyncTask<CompletedExerciseItem, Void, Void> {
@@ -128,85 +219,6 @@ public class ExerciseRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             completedExerciseDao.deleteAllCompletedExercises();
-            return null;
-        }
-    }
-
-
-    //Method Available Exercise
-    public void insert(AvailableExerciseItem availableExerciseItem) {
-        new InsertAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
-    }
-
-    public void update(AvailableExerciseItem availableExerciseItem) {
-        new UpdateAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
-    }
-
-    public void delete(AvailableExerciseItem availableExerciseItem) {
-        new DeleteAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
-
-    }
-
-    public void deleteAllAvailableExercise() {
-        new DeleteAllAvailableExerciseAsyncTask(mAvailableExerciseDao).execute();
-    }
-
-    public LiveData<List<AvailableExerciseItem>> getAllAvailableExercise() {
-        return mAllAvailableExercise;
-    }
-
-    //Async task for Available Exercise
-    public static class InsertAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem,Void,Void> {
-
-        private AvailableExerciseDao availableExerciseDao;
-
-        private  InsertAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
-            this.availableExerciseDao = availableExerciseDao;
-        }
-
-        @Override
-        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
-            return null;
-        }
-    }
-
-    private static class UpdateAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
-
-        private AvailableExerciseDao availableExerciseDao;
-
-        private UpdateAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
-            this.availableExerciseDao = availableExerciseDao;
-        }
-
-
-        @Override
-        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
-            return null;
-        }
-    }
-
-    public static class DeleteAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
-        private AvailableExerciseDao availableExerciseDao;
-
-        public DeleteAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
-            this.availableExerciseDao = availableExerciseDao;
-        }
-
-        @Override
-        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
-            return null;
-        }
-    }
-
-    public static class DeleteAllAvailableExerciseAsyncTask extends AsyncTask<Void, Void, Void> {
-        private AvailableExerciseDao availableExerciseDao;
-
-        public DeleteAllAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
-            this.availableExerciseDao = availableExerciseDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
             return null;
         }
     }
