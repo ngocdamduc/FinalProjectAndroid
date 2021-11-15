@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import org.threeten.bp.LocalDate;
+
 @Entity(tableName = "available_exercise_table")
 public class AvailableExerciseItem {
 
@@ -27,42 +29,44 @@ public class AvailableExerciseItem {
     @Ignore
     private boolean mIsChecked;
 
+    public AvailableExerciseItem(ExerciseType mExerciseType, @NonNull String mExerciseName, boolean mFavorite, boolean mCustom, boolean mIsChecked) {
+        this.mExerciseType = mExerciseType;
+        this.mExerciseName = mExerciseName;
+        this.mFavorite = mFavorite;
+        this.mCustom = mCustom;
+        this.mIsChecked = false;
+    }
+// General constructor for available exercise item
+
+
     // Empty constructor
     public AvailableExerciseItem() {
     }
 
-    // General constructor for available exercise item
-    public AvailableExerciseItem(ExerciseType type, @NonNull String exerciseName, boolean favorite, boolean custom) {
-        mExerciseType = type;
-        mExerciseName = exerciseName;
-        mFavorite = favorite;
-        mCustom = custom;
-        mIsChecked = false;
-    }
 
     // Copy constructor
     public AvailableExerciseItem(AvailableExerciseItem anotherItem) {
-        mExerciseType = anotherItem.getMExerciseType();
-        mExerciseName = anotherItem.getMExerciseName();
+        mExerciseType = anotherItem.getExerciseType();
+        mExerciseName = anotherItem.getExerciseName();
         mFavorite = anotherItem.isFavorite();
         mCustom = anotherItem.isCustom();
         mIsChecked = anotherItem.isChecked();
     }
 
     // Getters and setters for fields
-    ExerciseType getMExerciseType() {
+    ExerciseType getExerciseType() {
         return mExerciseType;
     }
 
-    public void setMExerciseType(ExerciseType exerciseType) {
+    public void setExerciseType(ExerciseType exerciseType) {
         this.mExerciseType = exerciseType;
     }
 
-    public void setMExerciseName(String exerciseName) {
+    public void setExerciseName(String exerciseName) {
         this.mExerciseName = exerciseName;
     }
 
-    public String getMExerciseName() {
+    public String getExerciseName() {
         return mExerciseName;
     }
 

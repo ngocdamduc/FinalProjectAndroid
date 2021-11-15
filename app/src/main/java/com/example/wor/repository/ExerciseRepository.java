@@ -4,6 +4,9 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.wor.room.AvailableExerciseDao;
+import com.example.wor.room.AvailableExerciseItem;
 import com.example.wor.room.CompletedExerciseDao;
 import com.example.wor.room.CompletedExerciseItem;
 import com.example.wor.room.WORDatabase;
@@ -15,13 +18,20 @@ import java.util.List;
 public class ExerciseRepository {
     //Fields
     private CompletedExerciseDao mCompletedExerciseDao;
+    private AvailableExerciseDao mAvailableExerciseDao;
+
+    private  LiveData<List<AvailableExerciseItem>> mAllAvailableExercise;
     private LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
 
     // Constructor
     public ExerciseRepository(Application application) {
         WORDatabase database = WORDatabase.getInstance(application);
+        //complete
         mCompletedExerciseDao = database.completedExerciseDao();
         mAllCompletedExercises = mCompletedExerciseDao.getAllCompletedExercises();
+        //available
+        mAvailableExerciseDao = database.availableExerciseDao();
+        mAllAvailableExercise = mAvailableExerciseDao.getAllAvailableExercises();
     }
 
     // Methods for CompletedExerciseDao
@@ -118,6 +128,85 @@ public class ExerciseRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             completedExerciseDao.deleteAllCompletedExercises();
+            return null;
+        }
+    }
+
+
+    //Method Available Exercise
+    public void insert(AvailableExerciseItem availableExerciseItem) {
+        new InsertAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+    }
+
+    public void update(AvailableExerciseItem availableExerciseItem) {
+        new UpdateAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+    }
+
+    public void delete(AvailableExerciseItem availableExerciseItem) {
+        new DeleteAvailableExerciseAsyncTask(mAvailableExerciseDao).execute(availableExerciseItem);
+
+    }
+
+    public void deleteAllAvailableExercise() {
+        new DeleteAllAvailableExerciseAsyncTask(mAvailableExerciseDao).execute();
+    }
+
+    public LiveData<List<AvailableExerciseItem>> getAllAvailableExercise() {
+        return mAllAvailableExercise;
+    }
+
+    //Async task for Available Exercise
+    public static class InsertAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem,Void,Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private  InsertAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            return null;
+        }
+    }
+
+    private static class UpdateAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
+
+        private AvailableExerciseDao availableExerciseDao;
+
+        private UpdateAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            return null;
+        }
+    }
+
+    public static class DeleteAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
+        private AvailableExerciseDao availableExerciseDao;
+
+        public DeleteAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(AvailableExerciseItem... availableExerciseItems) {
+            return null;
+        }
+    }
+
+    public static class DeleteAllAvailableExerciseAsyncTask extends AsyncTask<Void, Void, Void> {
+        private AvailableExerciseDao availableExerciseDao;
+
+        public DeleteAllAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
+            this.availableExerciseDao = availableExerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
             return null;
         }
     }
