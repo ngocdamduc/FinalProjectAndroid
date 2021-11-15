@@ -39,6 +39,14 @@
     <string name="rep">Rep(s)</string>
     <string name="Kilogram">kg</string>
     <string name="new_set">New Set</string>
+    <!-- Favorite Fragment -->
+    <string name="favorite_instructions_image_description">Image of hearts.</string>
+    <string name="favorite_image_description">Image of a heart.</string>
+    <string name="favorite_instructions">Favorite an exercise to access \nit quickly in this tab.</string>
+    <!-- Custom Fragment -->
+    <string name="custom_instructions_image_description">Image of creativity.</string>
+    <string name="custom_instruction">Access any custom exercise you create \nin this tab.</string>
+    <string name="add_exercise">Add an exercise: </string>
     <!-- Session Fragment -->
     <string name="session">Session</string>
     <!-- Workout Another Day Fragment -->
