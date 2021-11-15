@@ -63,4 +63,7 @@
     <string name="delete">Delete</string>
     <string name="search">Search</string>
     <string name="toast_error_message">Fields cannot be empty.</string>
+
+    <string name="app_height">AppHeight</string>
+    <string name="app_weight">AppWeight</string>
 </resources>
