@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.Arrays;
@@ -15,9 +14,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Database(entities = {CompletedExerciseItem.class, AvailableExerciseItem.class}, version = 1, exportSchema = false)
-@TypeConverters({com.example.wor.room.TypeConverters.class})
+@androidx.room.TypeConverters({TypeConverters.class})
+
 public abstract class WORDatabase extends RoomDatabase {
-    //Fields
+
+    // Fields
     private static WORDatabase sInstance;
     public abstract AvailableExerciseDao availableExerciseDao();
     public abstract CompletedExerciseDao completedExerciseDao();
@@ -33,7 +34,7 @@ public abstract class WORDatabase extends RoomDatabase {
         return sInstance;
     }
 
-    private static final RoomDatabase.Callback sRoomCallBack = new RoomDatabase.Callback() {
+    private static RoomDatabase.Callback sRoomCallBack = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -53,7 +54,7 @@ public abstract class WORDatabase extends RoomDatabase {
             // Add initial available exercise info
             String[] cardio = {"Walking", "Jogging", "Cycling", "Swimming", "Rowing", "Dancing", "Tennis", "Kickboxing", "Stair Climbing", "Jump Rope", "Skating", "Basketball", "Football", "Soccer", "Rugby",
                     "Squash", "Hockey", "Treadmill", "Jumping Jacks", "Ping Pong", "Racquetball", "Frisbee", "Golf", "Mini-golf"};
-            String[] strength = {"Bench Press", "Weighted Squats", "Leg Press", "Leg Extension", "Leg Curl", "Standing Calf Raises", "Seat Calf Raises", "Chest Fly", "Bent-over Row", "Upright Row",
+            String[] strength = {"Bench Press", "Weighted Squats", "Leg Press", "Deadlift", "Leg Extension", "Leg Curl", "Standing Calf Raises", "Seat Calf Raises", "Chest Fly", "Bent-over Row", "Upright Row",
                     "Shoulder Press", "Shoulder Fly", "Lateral Raise", "Shoulder Shrug", "Triceps Extension", "Biceps Curl", "Weighted Crunch", "Weighted Leg Raise", "Back Extension"};
             String[] calisthenics = {"Muscle-ups", "Squat Jumps", "Front Lever", "Push-ups", "Pull-ups", "Chin-ups", "Squats", "Back Lever", "Handstand", "Dips", "Hyper-extensions", "Leg Raises", "Planks",
                     "Burpees", "L-sits", "Lunge", "Crunch", "Russian Twist", "Mountain Climbers", "Bear Crawls"};
@@ -75,4 +76,3 @@ public abstract class WORDatabase extends RoomDatabase {
         }
     }
 }
-

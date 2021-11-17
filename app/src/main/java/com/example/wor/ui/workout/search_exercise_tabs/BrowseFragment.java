@@ -99,7 +99,7 @@ public class BrowseFragment extends Fragment {
                     bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     ArrayList<String> exerciseInfo = new ArrayList<>();
                     exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(mExerciseTypeInput)));
-                    exerciseInfo.add(currentAvailableExercise.getExerciseName());
+                    exerciseInfo.add(currentAvailableExercise.getMExerciseName());
                     bundle.putStringArrayList(MainActivity.EXERCISE_INFO, exerciseInfo);
                     NavDestination currentDestination = Navigation.findNavController(view).getCurrentDestination();
                     if (currentDestination != null && currentDestination.getId() == R.id.navigation_search_exercise) {

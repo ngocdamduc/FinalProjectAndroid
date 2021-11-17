@@ -7,12 +7,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.wor.R;
 import com.example.wor.room.AvailableExerciseItem;
 import com.google.android.material.card.MaterialCardView;
@@ -35,12 +33,12 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
     private static final DiffUtil.ItemCallback<AvailableExerciseItem> DIFF_CALLBACK= new DiffUtil.ItemCallback<AvailableExerciseItem>() {
         @Override
         public boolean areItemsTheSame(@NonNull AvailableExerciseItem oldItem, @NonNull AvailableExerciseItem newItem) {
-            return oldItem.getExerciseName().equals(newItem.getExerciseName());
+            return oldItem.getMExerciseName().equals(newItem.getMExerciseName());
         }
 
         @Override
         public boolean areContentsTheSame(@NonNull AvailableExerciseItem oldItem, @NonNull AvailableExerciseItem newItem) {
-            return oldItem.getExerciseName().equals(newItem.getExerciseName()) && oldItem.isChecked() == newItem.isChecked();
+            return oldItem.getMExerciseName().equals(newItem.getMExerciseName()) && oldItem.isChecked() == newItem.isChecked();
         }
     };
 
@@ -78,16 +76,16 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
 
     @NonNull
     @Override
-    public AvailableExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AvailableExerciseAdapter.AvailableExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_available_exercise, parent, false);
-        return new AvailableExerciseHolder(itemView);
+        return new AvailableExerciseAdapter.AvailableExerciseHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AvailableExerciseHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AvailableExerciseAdapter.AvailableExerciseHolder holder, int position) {
         AvailableExerciseItem currentAvailableExerciseItem = getItem(position);
-        holder.mAvailableExerciseName.setText(currentAvailableExerciseItem.getExerciseName());
+        holder.mAvailableExerciseName.setText(currentAvailableExerciseItem.getMExerciseName());
         if (currentAvailableExerciseItem.isCustom()) {
             holder.mAvailableExerciseCardView.setCheckable(true);
             if (currentAvailableExerciseItem.isChecked()) {
@@ -132,7 +130,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (AvailableExerciseItem item: mAvailableExerciseItemsFull) {
-                    if (item.getExerciseName().toLowerCase().contains(filterPattern)) {
+                    if (item.getMExerciseName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
