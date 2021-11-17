@@ -43,7 +43,6 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.StatsViewHol
         }
         return 0;
     }
-
     public class StatsViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_height;
         private TextView tv_weight;

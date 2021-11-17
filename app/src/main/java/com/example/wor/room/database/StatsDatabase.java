@@ -22,4 +22,5 @@ public abstract class StatsDatabase extends RoomDatabase {
         return instance;
     }
     public abstract StatsDao statsDao();
+
 }

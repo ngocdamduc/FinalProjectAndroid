@@ -70,7 +70,6 @@ public class StatsAcivity extends AppCompatActivity {
             Toast.makeText(this, "Exist Information", Toast.LENGTH_SHORT).show();
             return;
         }
-
         StatsDatabase.getInstance(this).statsDao().insertStats(stats);
         Toast.makeText(this, "Add Stats successfully", Toast.LENGTH_SHORT).show();
 
