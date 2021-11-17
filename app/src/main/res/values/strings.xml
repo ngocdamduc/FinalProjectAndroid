@@ -12,13 +12,13 @@
     <string name="app_name_abr">WOR</string>
     <!-- Stats Fragment -->
     <string name="body_weight">Weight</string>
-    <string name="body_fat">Body Fat</string>
+    <string name="Height_Stat">Height</string>
     <string name="update">Update</string>
     <string name="no_data">No data points</string>
     <string name="none">None</string>
     <string name="update_stat_title">Update body stats: </string>
     <string name="body_weight_w_units">Body Weight (kg)</string>
-    <string name="weight_w_units">Weight (kg)</string>
+    <string name="height_w_units">Height (m)</string>
     <string name="Height">Height (cm)</string>
     <!-- Calendar Fragment -->
     <string name="sun">SUN</string>
@@ -39,6 +39,7 @@
     <string name="rep">Rep(s)</string>
     <string name="Kilogram">kg</string>
     <string name="new_set">New Set</string>
+    <string name="weight">Weight(kg)</string>
     <!-- Favorite Fragment -->
     <string name="favorite_instructions_image_description">Image of hearts.</string>
     <string name="favorite_image_description">Image of a heart.</string>
@@ -56,6 +57,9 @@
     <string name="cardio">cardio</string>
     <string name="strength">strength</string>
     <string name="add">add</string>
+    <!-- Note Dialog Fragment -->
+    <string name="add_note">Add a note: </string>
+    <string name="note">Note</string>
     <!-- Miscellaneous -->
     <string name="x">"x"</string>
     <string name="cancel">Cancel</string>

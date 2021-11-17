@@ -29,12 +29,12 @@ public class AvailableExerciseItem {
     @Ignore
     private boolean mIsChecked;
 
-    public AvailableExerciseItem(ExerciseType mExerciseType, @NonNull String mExerciseName, boolean mFavorite, boolean mCustom, boolean mIsChecked) {
-        this.mExerciseType = mExerciseType;
-        this.mExerciseName = mExerciseName;
-        this.mFavorite = mFavorite;
-        this.mCustom = mCustom;
-        this.mIsChecked = false;
+    public AvailableExerciseItem(ExerciseType type, @NonNull String exerciseName, boolean favorite, boolean custom) {
+        mExerciseType = type;
+        mExerciseName = exerciseName;
+        mFavorite = favorite;
+        mCustom = custom;
+        mIsChecked = false;
     }
 // General constructor for available exercise item
 

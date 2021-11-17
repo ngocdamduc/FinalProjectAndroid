@@ -14,18 +14,26 @@ import java.util.List;
 
 @Dao
 public interface CompletedExerciseDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
     void insert(CompletedExerciseItem completedExerciseItem);
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+
+    @Update (onConflict = OnConflictStrategy.REPLACE)
     void update(CompletedExerciseItem completedExerciseItem);
+
     @Delete
     void delete(CompletedExerciseItem completedExerciseItem);
-    @Query("DELETE FROM completed_exercise_table WHERE exercise_date =:date")
+
+    @Query("DELETE FROM completed_exercise_table WHERE exercise_date = :date")
     void deleteAllCompletedExerciseByDate(LocalDate date);
+
     @Query("DELETE FROM completed_exercise_table")
     void deleteAllCompletedExercises();
-    @Query("SELECT * FROM completed_exercise_table WHERE exercise_date =:date")
+
+    @Query("SELECT * FROM completed_exercise_table WHERE exercise_date = :date")
     LiveData<List<CompletedExerciseItem>> getCompletedExerciseByDate(LocalDate date);
+
     @Query("SELECT * FROM completed_exercise_table")
     LiveData<List<CompletedExerciseItem>> getAllCompletedExercises();
+
 }

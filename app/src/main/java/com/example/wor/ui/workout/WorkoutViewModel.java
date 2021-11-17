@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.wor.repository.ExerciseRepository;
 import com.example.wor.room.AvailableExerciseItem;
 import com.example.wor.room.CompletedExerciseItem;
@@ -49,8 +48,8 @@ public class WorkoutViewModel extends AndroidViewModel {
         return mRepository.getAllCustomAvailableExercise(custom, exerciseType);
     }
 
-    public LiveData<List<AvailableExerciseItem>> getAllAvailableFavoriteExercise(boolean favorite, ExerciseType exerciseType) {
-        return mRepository.getAllAvailableFavoriteExercise(favorite, exerciseType);
+    public LiveData<List<AvailableExerciseItem>> getAllAvailableFavoriteExercise(boolean favorited, ExerciseType exerciseType) {
+        return mRepository.getAllAvailableFavoriteExercise(favorited, exerciseType);
     }
 
     public LiveData<List<AvailableExerciseItem>> getAllAvailableExercises(ExerciseType exerciseType) {

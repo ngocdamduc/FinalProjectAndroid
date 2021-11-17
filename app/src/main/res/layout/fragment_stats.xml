@@ -102,7 +102,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/body_fat"
+                    android:text="@string/Height_Stat"
                     android:textAppearance="@style/open_sans_body3"
                     app:layout_constraintEnd_toStartOf="@id/vertical_guideline_66percent"
                     app:layout_constraintStart_toEndOf="@id/vertical_guideline_33percent"
@@ -226,7 +226,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="2dp"
                         android:gravity="start"
-                        android:text="@string/weight_w_units"
+                        android:text="@string/height_w_units"
                         android:textAppearance="@style/open_sans_body2" />
 
                     <View
