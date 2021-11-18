@@ -106,11 +106,7 @@ public class BrowseFragment extends Fragment {
                         Navigation.findNavController(view).navigate(R.id.to_session, bundle);
                     }
                 } else if (view.getId() == R.id.available_exercise_favorite_iv) {
-                    if (currentAvailableExercise.isFavorite()) {
-                        currentAvailableExercise.setFavorite(false);
-                    } else {
-                        currentAvailableExercise.setFavorite(true);
-                    }
+                    currentAvailableExercise.setFavorite(!currentAvailableExercise.isFavorite());
                     mViewModel.update(currentAvailableExercise);
                     mAdapter.notifyDataSetChanged();
                 }

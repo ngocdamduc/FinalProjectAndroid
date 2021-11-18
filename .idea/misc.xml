@@ -53,6 +53,7 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_legend.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_lengend.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_add_stat_dialog.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_browse.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calendar.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calisthenics_session.xml" value="0.2" />
@@ -61,7 +62,7 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_favorite.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_favourite.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_search_exercise.xml" value="0.23802083333333332" />
-        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_stats.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_stats.xml" value="0.1" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_strength_session.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_another_day.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_workout_today.xml" value="0.23802083333333332" />

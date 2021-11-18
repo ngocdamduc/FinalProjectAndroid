@@ -1,6 +1,5 @@
 package com.example.wor.ui.calendar;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 
+import com.example.wor.MainActivity;
 import com.example.wor.R;
 import com.example.wor.room.CompletedExerciseItem;
+import com.example.wor.room.TypeConverters;
 import com.example.wor.ui.workout.WorkoutViewModel;
 import com.kizitonwose.calendarview.CalendarView;
 import com.kizitonwose.calendarview.model.CalendarDay;
@@ -36,7 +38,7 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
-    private final Set<LocalDate> mWorkoutDates = new HashSet<>();
+    private Set<LocalDate> mWorkoutDates = new HashSet<>();
 
     // UI fields
     private CalendarView mCalendarView;
@@ -49,7 +51,7 @@ public class CalendarFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+            ViewGroup container, Bundle savedInstanceState) {
         // Initialize fields and variables
         View root = inflater.inflate(R.layout.fragment_calendar, container,false);
         mCalendarView = root.findViewById(R.id.calendar_view);
@@ -69,15 +71,30 @@ public class CalendarFragment extends Fragment {
 
             // Fields
             private CalendarDay mCalendarDay;
-            private final TextView mCalendarDayTV;
-            private final View mCalendarDotV;
-            private final FrameLayout mCalendarDayBackgroundFL;
+            private TextView mCalendarDayTV;
+            private View mCalendarDotV;
+            private FrameLayout mCalendarDayBackgroundFL;
 
             private DayViewContainer(@NonNull View view) {
                 super(view);
                 mCalendarDayBackgroundFL = view.findViewById(R.id.calendar_day_fl);
                 mCalendarDayTV = view.findViewById(R.id.calendar_day_tv);
                 mCalendarDotV = view.findViewById(R.id.calendar_dot_v);
+
+                // On click listener
+                mCalendarDayTV.setOnClickListener((View dayView) -> {
+                    Bundle bundle = new Bundle();
+                    String dateInfo = TypeConverters.dateToString(mCalendarDay.getDate());
+                    bundle.putString(MainActivity.DATE_INFO, dateInfo);
+                    NavDestination currentDestination = Navigation.findNavController(dayView).getCurrentDestination();
+                    if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_calendar) {
+                        if (mCalendarDay.getDate().equals(LocalDate.now())) {
+                            Navigation.findNavController(dayView).navigate(R.id.to_workout_today);
+                        } else {
+                            Navigation.findNavController(dayView).navigate(R.id.to_workout_another_day, bundle);
+                        }
+                    }
+                });
             }
         }
 
@@ -89,7 +106,6 @@ public class CalendarFragment extends Fragment {
                 return new DayViewContainer(view);
             }
 
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void bind(@NonNull DayViewContainer viewContainer, @NonNull CalendarDay calendarDay) {
                 viewContainer.mCalendarDay = calendarDay;
@@ -125,6 +141,19 @@ public class CalendarFragment extends Fragment {
             return null;
         });
         return root;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // Observe live data
+        WorkoutViewModel mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel.getAllCompletedExercises().observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
+            for (CompletedExerciseItem completedExerciseItem : completedExerciseItems) {
+                mWorkoutDates.add(completedExerciseItem.getMExerciseDate());
+            }
+            mCalendarView.notifyCalendarChanged();
+        });
     }
     // Other methods
 }

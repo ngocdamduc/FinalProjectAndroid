@@ -180,11 +180,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
                 newSession.setReadOnly(true);
                 checkedSessionList.add(newSession);
             }
-            if (currentSession.isChecked()) {
-                checkedSessionList.get(position).setChecked(false);
-            } else {
-                checkedSessionList.get(position).setChecked(true);
-            }
+            checkedSessionList.get(position).setChecked(!currentSession.isChecked());
             mAdapter.submitList(checkedSessionList);
             return true;
         });
@@ -298,7 +294,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
     }
 
     // Setup action mode
-    private ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
+    private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             mode.getMenuInflater().inflate(R.menu.delete_menu, menu);

@@ -9,6 +9,7 @@ import org.threeten.bp.LocalDate;
 
 @Entity(tableName = "stat_table")
 public class Stat {
+
     // Fields
     @PrimaryKey
     @NonNull
@@ -33,7 +34,7 @@ public class Stat {
     }
 
     // Getters and setters
-    public org.threeten.bp.LocalDate getMDate() {
+    public LocalDate getMDate() {
         return mDate;
     }
 
@@ -49,12 +50,12 @@ public class Stat {
         this.mWeight = mWeight;
     }
 
-    public int getMBodyFat() {
+    public int getMHeight() {
         return mHeight;
     }
 
-    public void setMBodyFat(int mBodyFat) {
-        this.mHeight = mBodyFat;
+    public void setMHeight(int mHeight) {
+        this.mHeight = mHeight;
     }
 
 }

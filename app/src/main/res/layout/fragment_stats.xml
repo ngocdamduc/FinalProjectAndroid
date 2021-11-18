@@ -108,7 +108,7 @@
                     android:textAppearance="@style/open_sans_body3"
                     app:layout_constraintEnd_toStartOf="@id/vertical_guideline_66percent"
                     app:layout_constraintStart_toEndOf="@id/vertical_guideline_33percent"
-                    app:layout_constraintTop_toBottomOf="@id/stats_body_fat_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/stats_height_tv" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/stats_current_date_tv"
@@ -137,7 +137,7 @@
                     app:layout_constraintTop_toBottomOf="@id/stats_divider" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/stats_body_fat_tv"
+                    android:id="@+id/stats_height_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -228,14 +228,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="2dp"
                         android:gravity="start"
-                        android:text="@string/height_w_units"
+                        android:text="@string/Height"
                         android:textAppearance="@style/open_sans_body2" />
 
                     <View
                         style="@style/Divider" />
 
                     <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/fat_chart"
+                        android:id="@+id/height_chart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"

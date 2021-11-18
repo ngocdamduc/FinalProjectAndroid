@@ -18,9 +18,9 @@ import java.util.List;
 public class ExerciseRepository {
 
     // Fields
-    private AvailableExerciseDao mAvailableExerciseDao;
-    private CompletedExerciseDao mCompletedExerciseDao;
-    private LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
+    private final AvailableExerciseDao mAvailableExerciseDao;
+    private final CompletedExerciseDao mCompletedExerciseDao;
+    private final LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
 
     // Constructor
     public ExerciseRepository(Application application) {
@@ -62,7 +62,7 @@ public class ExerciseRepository {
     // AsyncTasks for AvailableExerciseItem
     private static class InsertAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
 
-        private AvailableExerciseDao availableExerciseDao;
+        private final AvailableExerciseDao availableExerciseDao;
 
         private InsertAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
             this.availableExerciseDao = availableExerciseDao;
@@ -77,7 +77,7 @@ public class ExerciseRepository {
 
     private static class UpdateAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
 
-        private AvailableExerciseDao availableExerciseDao;
+        private final AvailableExerciseDao availableExerciseDao;
 
         private UpdateAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
             this.availableExerciseDao = availableExerciseDao;
@@ -92,7 +92,7 @@ public class ExerciseRepository {
 
     private static class DeleteAvailableExerciseAsyncTask extends AsyncTask<AvailableExerciseItem, Void, Void> {
 
-        private AvailableExerciseDao availableExerciseDao;
+        private final AvailableExerciseDao availableExerciseDao;
 
         private DeleteAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
             this.availableExerciseDao = availableExerciseDao;
@@ -107,7 +107,7 @@ public class ExerciseRepository {
 
     private static class DeleteAllAvailableExerciseAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private AvailableExerciseDao availableExerciseDao;
+        private final AvailableExerciseDao availableExerciseDao;
 
         private DeleteAllAvailableExerciseAsyncTask(AvailableExerciseDao availableExerciseDao) {
             this.availableExerciseDao = availableExerciseDao;
@@ -150,7 +150,7 @@ public class ExerciseRepository {
     // AsyncTasks for Completed Exercise Item
     private static class InsertCompletedExerciseAsyncTask extends AsyncTask<CompletedExerciseItem, Void, Void> {
 
-        private CompletedExerciseDao completedExerciseDao;
+        private final CompletedExerciseDao completedExerciseDao;
 
         private InsertCompletedExerciseAsyncTask(CompletedExerciseDao completedExerciseDao) {
             this.completedExerciseDao = completedExerciseDao;
@@ -165,7 +165,7 @@ public class ExerciseRepository {
 
     private static class UpdateCompletedExerciseAsyncTask extends AsyncTask<CompletedExerciseItem, Void, Void> {
 
-        private CompletedExerciseDao completedExerciseDao;
+        private final CompletedExerciseDao completedExerciseDao;
 
         private UpdateCompletedExerciseAsyncTask(CompletedExerciseDao completedExerciseDao) {
             this.completedExerciseDao = completedExerciseDao;
@@ -180,7 +180,7 @@ public class ExerciseRepository {
 
     private static class DeleteCompletedExerciseAsyncTask extends AsyncTask<CompletedExerciseItem, Void, Void> {
 
-        private CompletedExerciseDao completedExerciseDao;
+        private final CompletedExerciseDao completedExerciseDao;
 
         private DeleteCompletedExerciseAsyncTask(CompletedExerciseDao completedExerciseDao) {
             this.completedExerciseDao = completedExerciseDao;
@@ -195,7 +195,7 @@ public class ExerciseRepository {
 
     private static class DeleteAllCompletedExerciseByDateAsyncTask extends AsyncTask<LocalDate, Void, Void> {
 
-        private CompletedExerciseDao completedExerciseDao;
+        private final CompletedExerciseDao completedExerciseDao;
 
         private DeleteAllCompletedExerciseByDateAsyncTask(CompletedExerciseDao completedExerciseDao) {
             this.completedExerciseDao = completedExerciseDao;
@@ -210,7 +210,7 @@ public class ExerciseRepository {
 
     private static class DeleteAllCompletedExerciseAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private CompletedExerciseDao completedExerciseDao;
+        private final CompletedExerciseDao completedExerciseDao;
 
         private DeleteAllCompletedExerciseAsyncTask(CompletedExerciseDao completedExerciseDao) {
             this.completedExerciseDao = completedExerciseDao;
