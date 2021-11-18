@@ -11,96 +11,110 @@ import java.util.List;
 
 @Entity(tableName = "completed_exercise_table")
 public class CompletedExerciseItem {
+
+    // Fields
     @PrimaryKey(autoGenerate = true)
     private int mId; // Look into this later -> Can't find getter for mId
+
     @ColumnInfo(name = "exercise_type")
     private ExerciseType mExerciseType;
+
     @ColumnInfo(name = "exercise_name")
     private String mExerciseName;
+
     @ColumnInfo(name = "exercise_date")
-    private org.threeten.bp.LocalDate mExerciseDate;
+    private LocalDate mExerciseDate;
+
     @ColumnInfo(name = "list_of_session")
     private List<Session> mListOfSessions;
+
     @ColumnInfo(name = "note")
     private String mNote;
+
     @Ignore
     private boolean mIsChecked;
-    //Empty Constructor
-    public CompletedExerciseItem(){}
-    //Constructor for   completed Exercises
-    public CompletedExerciseItem(ExerciseType type, String exerciseName, LocalDate exerciseDate, List<Session> listOfSessions, String note){
+
+    // Empty constructor
+    public CompletedExerciseItem() {
+    }
+
+    // Constructor for completed exercises
+    public CompletedExerciseItem(ExerciseType type, String exerciseName, LocalDate exerciseDate, List<Session> listOfSessions, String note) {
         mExerciseType = type;
         mExerciseName = exerciseName;
-        mExerciseDate = exerciseDate;
+        mExerciseDate= exerciseDate;
         mListOfSessions = listOfSessions;
         mNote = note;
         mIsChecked = false;
     }
+
     // Deep copy constructor
-    public  CompletedExerciseItem(CompletedExerciseItem anotherItem){
-        mId = anotherItem.getId();
-        mExerciseType = anotherItem.getExerciseType();
-        mExerciseName = anotherItem.getExerciseName();
-        mExerciseDate = anotherItem.getExerciseDate();
-        mListOfSessions = anotherItem.getListOfSessions();
-        mNote = anotherItem.getNote();
-        mIsChecked = anotherItem.IsChecked();
-    }
-    //Getter and Setter
-    public ExerciseType getExerciseType() {
-        return mExerciseType;
+    public CompletedExerciseItem(CompletedExerciseItem anotherItem) {
+        mId = anotherItem.getMId();
+        mExerciseType = anotherItem.getMExerciseType();
+        mExerciseName = anotherItem.getMExerciseName();
+        mExerciseDate= anotherItem.getMExerciseDate();
+        mListOfSessions = anotherItem.getMListOfSessions();
+        mNote = anotherItem.getMNote();
+        mIsChecked = anotherItem.isChecked();
     }
 
-    public void setExerciseType(ExerciseType mExerciseType) {
-        this.mExerciseType = mExerciseType;
+    // Getters and setters for fields
+    public void setMId(int id) {
+        mId = id;
     }
 
-    public List<Session> getListOfSessions() {
-        return mListOfSessions;
-    }
-
-    public void setListOfSessions(List<Session> mListOfSessions) {
-        this.mListOfSessions = mListOfSessions;
-    }
-
-    public String getNote() {
-        return mNote;
-    }
-
-    public void setNote(String mNote) {
-        this.mNote = mNote;
-    }
-
-    public String getExerciseName() {
-        return mExerciseName;
-    }
-
-    public void setExerciseName(String mExerciseName) {
-        this.mExerciseName = mExerciseName;
-    }
-
-    public int getId() {
+    public int getMId() {
         return mId;
     }
 
-    public void setId(int mId) {
-        this.mId = mId;
+    public ExerciseType getMExerciseType() {
+        return mExerciseType;
     }
 
-    public boolean IsChecked() {
-        return mIsChecked;
+    public void setMExerciseType(ExerciseType exerciseType) {
+        mExerciseType = exerciseType;
     }
 
-    public void setIsChecked(Boolean mIsChecked) {
-        this.mIsChecked = mIsChecked;
+    public String getMExerciseName() {
+        return mExerciseName;
     }
-    public LocalDate getExerciseDate() {
+
+    public void setMExerciseName(String exerciseName) {
+        mExerciseName = exerciseName;
+    }
+
+
+    public LocalDate getMExerciseDate() {
         return mExerciseDate;
     }
 
-    public void setExerciseDate(LocalDate exerciseDate) {
+    public void setMExerciseDate(LocalDate exerciseDate) {
         mExerciseDate = exerciseDate;
     }
+
+    public void setMListOfSessions(List<Session> listOfSession) {
+        mListOfSessions = listOfSession;
+    }
+
+    public List<Session> getMListOfSessions() {
+        return mListOfSessions;
+    }
+
+    public void setMNote(String note) {
+        mNote = note;
+    }
+
+    public String getMNote() { return mNote; }
+
+    public void setChecked(boolean checked) {
+        mIsChecked = checked;
+    }
+
+    public boolean isChecked() {
+        return mIsChecked;
+    }
+
     // Other methods
     public boolean compareListOfSessions(List<Session> anotherListOfSessions) {
         if (mListOfSessions.size() != anotherListOfSessions.size()) {

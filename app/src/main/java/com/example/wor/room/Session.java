@@ -76,9 +76,9 @@ public class Session {
                 mReps = anotherSession.getReps();
                 mWeight = anotherSession.getWeight();
         }
-        mIsChecked = anotherSession.IsChecked();
-        mIsEmpty = anotherSession.IsEmpty();
-        mIsReadOnly = anotherSession.IsReadOnly();
+        mIsChecked = anotherSession.isChecked();
+        mIsEmpty = anotherSession.isEmpty();
+        mIsReadOnly = anotherSession.isReadOnly();
     }
     // Setters and Getters
     public ExerciseType getType() {
@@ -125,7 +125,7 @@ public class Session {
         this.mIntensity = mIntensity;
     }
 
-    public boolean IsEmpty() {
+    public boolean isEmpty() {
         return mIsEmpty;
     }
 
@@ -133,7 +133,7 @@ public class Session {
         this.mIsEmpty = mIsEmpty;
     }
 
-    public boolean IsChecked() {
+    public boolean isChecked() {
         return mIsChecked;
     }
 
@@ -141,7 +141,7 @@ public class Session {
         this.mIsChecked = mIsChecked;
     }
 
-    public boolean IsReadOnly() {
+    public boolean isReadOnly() {
         return mIsReadOnly;
     }
 
@@ -158,13 +158,13 @@ public class Session {
                 case CALISTHENICS:
                 case STRENGTH:
                     if (this.getReps() != anotherSession.getReps() || this.getWeight() != anotherSession.getWeight() ||
-                            this.IsChecked() != anotherSession.IsChecked() || this.IsReadOnly() != anotherSession.IsReadOnly()) {
+                            this.isChecked() != anotherSession.isChecked() || this.isReadOnly() != anotherSession.isReadOnly()) {
                         return false;
                     }
                     break;
                 case CARDIO:
                     if (this.getDuration() != anotherSession.getDuration() || this.getIntensity() != anotherSession.getIntensity() ||
-                            this.IsChecked() != anotherSession.IsChecked() || this.IsReadOnly() != anotherSession.IsReadOnly()) {
+                            this.isChecked() != anotherSession.isChecked() || this.isReadOnly() != anotherSession.isReadOnly()) {
                         return false;
                     }
                     break;
