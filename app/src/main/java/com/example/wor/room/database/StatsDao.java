@@ -35,8 +35,8 @@ public interface StatsDao {
     @Query("DELETE FROM stats")
     void deleteAllStats();
 
-    @Query("DELETE FROM stats WHERE stats_date =:date")
-    void deleteAllStatsDateByDate(LocalDate date);
+//    @Query("DELETE FROM stats WHERE stats_date =:date")
+//    void deleteAllStatsDateByDate(LocalDate date);
 
 
 //    deleteStatByDate, deleteAllStats, getStatByDate và getAllStats
