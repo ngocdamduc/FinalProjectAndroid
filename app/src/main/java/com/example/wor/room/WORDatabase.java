@@ -22,6 +22,7 @@ public abstract class WORDatabase extends RoomDatabase {
     private static WORDatabase sInstance;
     public abstract AvailableExerciseDao availableExerciseDao();
     public abstract CompletedExerciseDao completedExerciseDao();
+    public abstract StatDao statDao();
 
     // Singleton constructor
     public static synchronized WORDatabase getInstance(Context context) {
