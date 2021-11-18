@@ -7,13 +7,26 @@ android {
 
     defaultConfig {
         applicationId "com.example.wor"
-        minSdk 22
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"
     }
+
+//    signingConfigs {
+//        config {
+//            keyAlias 'key0'
+//            storeFile file('C:/Android/FinalProjectAndroid')
+//            storePassword 'quangng123'
+//            keyPassword 'quangng123'
+//        }
+//    }
     buildTypes {
+        debug {
+//            signingConfig signingConfigs.config
+        }
         release {
+//            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -50,9 +63,19 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.3.0"
     annotationProcessor "androidx.room:room-compiler:2.3.0"
-    implementation "androidx.recyclerview:recyclerview:1.2.1"                                       
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 
+    // Add dependencies.
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+
+    // hms
+    implementation 'com.huawei.hms:hwid:6.1.0.302'
+    implementation 'com.huawei.hms:ads-identifier:3.4.39.302'
+    implementation 'com.huawei.hms:ads-installreferrer:3.4.39.302'
+    implementation 'com.huawei.hms:ads-lite:13.4.39.302'
 }
 repositories {
     mavenCentral()
+    maven {url 'https://developer.huawei.com/repo/'}
 }
+apply plugin: 'com.huawei.agconnect'

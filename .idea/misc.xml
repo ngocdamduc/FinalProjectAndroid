@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/layout/activity_splash.xml" value="0.20260416666666667" />
+        <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/layout/activity_stats_acivity.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/layout/item_strength_session_set.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/mipmap-anydpi-v26/ic_app.xml" value="0.125" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25025641025641027" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/gray_grid_background.xml" value="0.25025641025641027" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/ic_add.xml" value="0.25416666666666665" />
