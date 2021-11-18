@@ -9,10 +9,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.wor.R;
+import com.example.wor.room.CompletedExerciseItem;
+import com.example.wor.ui.workout.WorkoutViewModel;
 import com.kizitonwose.calendarview.CalendarView;
 import com.kizitonwose.calendarview.model.CalendarDay;
 import com.kizitonwose.calendarview.model.CalendarMonth;
@@ -26,6 +30,7 @@ import org.threeten.bp.YearMonth;
 import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CalendarFragment extends Fragment {
