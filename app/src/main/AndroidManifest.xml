@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-            <activity
-                android:name=".room.StatsAcivity"
-                android:exported="false">
-            </activity>
 
-            <!--Spalh View-->
+        <!--Spalh View-->
             <activity
                 android:name=".SplashActivity"
                 android:exported="true"
