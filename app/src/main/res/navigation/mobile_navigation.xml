@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_to_workout_another_day"
-        android:name="com.example.wor.ui.calendar.WorkOutAnotherDayFragment"
+        android:name="com.example.wor.ui.calendar.WorkoutAnotherDayFragment"
         android:label="@string/workout_another_day"
         tools:layout="@layout/fragment_calisthenics_session">
         <action

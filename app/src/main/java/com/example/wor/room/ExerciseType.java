@@ -5,7 +5,7 @@ public enum ExerciseType {
     STRENGTH(1),
     CALISTHENICS(2);
     //Fields
-    private int mCategory;
+    private final int mCategory;
 
     //Constructor
     ExerciseType (int category){this.mCategory = category;}

@@ -19,9 +19,9 @@ import java.util.List;
 public class WorkoutViewModel extends AndroidViewModel {
 
     // Fields
-    private ExerciseRepository mRepository;
-    private MutableLiveData<CompletedExerciseItem> mExerciseInput = new MutableLiveData<>();
-    private LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
+    private final ExerciseRepository mRepository;
+    private final MutableLiveData<CompletedExerciseItem> mExerciseInput = new MutableLiveData<>();
+    private final LiveData<List<CompletedExerciseItem>> mAllCompletedExercises;
 
     // Constructor
     public WorkoutViewModel(@NonNull Application application) {

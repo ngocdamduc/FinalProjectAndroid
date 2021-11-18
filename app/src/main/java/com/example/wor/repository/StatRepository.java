@@ -9,20 +9,24 @@ import com.example.wor.room.Stat;
 import com.example.wor.room.StatDao;
 import com.example.wor.room.WORDatabase;
 
-import java.time.LocalDate;
+import org.threeten.bp.LocalDate;
+
 import java.util.List;
 
 public class StatRepository {
 
-    //field
-    private StatDao mStatDao;
+    // Fields
+    private final StatDao mStatDao;
+    private final LiveData<List<Stat>> mAllStat;
 
-    //constructor
-    private StatRepository(Application application) {
+    // Constructor
+    public StatRepository(Application application) {
         WORDatabase database = WORDatabase.getInstance(application);
         mStatDao = database.statDao();
+        mAllStat = mStatDao.getAllStats();
     }
 
+    // Methods for StatDao
     public void insert(Stat stat) {
         new InsertStatAsyncTask(mStatDao).execute(stat);
     }
@@ -35,89 +39,92 @@ public class StatRepository {
         new DeleteStatAsyncTask(mStatDao).execute(stat);
     }
 
-    public void deleteStatByDate(LocalDate mDate) {
-        return mStatDao.deleteStatByDate(mDate);
+    public void deleteStatByDate(LocalDate date) {
+        new DeleteStatByDateAsyncTask(mStatDao).execute(date);
     }
 
-    public void deleteAllStats() {
+    public void deleteAlStats() {
         new DeleteAllStatsAsyncTask(mStatDao).execute();
     }
 
-    public LiveData<List<Stat>> getStatByDate(LocalDate mDate) {
-        return mStatDao.getStatByDate(mDate);
-    }
+    public LiveData<List<Stat>> getStatByDate(LocalDate date) { return mStatDao.getStatByDate(date); }
 
     public LiveData<List<Stat>> getAllStats() {
-        return mStatDao.getAllstats();
+        return mAllStat;
     }
 
-    //async class
-    public static class InsertStatAsyncTask extends AsyncTask<Stat,Void,Void>{
+    // AsyncTasks for Stat
+    private static class InsertStatAsyncTask extends AsyncTask<Stat, Void, Void> {
 
-        private StatDao statDao;
+        private final StatDao mStatDao;
 
         private InsertStatAsyncTask(StatDao statDao) {
-            this.statDao = statDao;
+            this.mStatDao = statDao;
         }
 
         @Override
         protected Void doInBackground(Stat... stats) {
+            mStatDao.insert(stats[0]);
             return null;
         }
     }
 
-    public static class UpdateStatAsyncTask extends AsyncTask<Stat,Void,Void>{
+    private static class UpdateStatAsyncTask extends AsyncTask<Stat, Void, Void> {
 
-        private StatDao statDao;
+        private final StatDao mStatDao;
 
         private UpdateStatAsyncTask(StatDao statDao) {
-            this.statDao = statDao;
+            this.mStatDao = statDao;
         }
 
         @Override
         protected Void doInBackground(Stat... stats) {
+            mStatDao.update(stats[0]);
             return null;
         }
     }
 
-    public static class DeleteStatAsyncTask extends AsyncTask<Stat,Void,Void>{
+    private static class DeleteStatAsyncTask extends AsyncTask<Stat, Void, Void> {
 
-        private StatDao statDao;
+        private final StatDao mStatDao;
 
         private DeleteStatAsyncTask(StatDao statDao) {
-            this.statDao = statDao;
+            this.mStatDao = statDao;
         }
 
         @Override
         protected Void doInBackground(Stat... stats) {
+            mStatDao.delete(stats[0]);
             return null;
         }
     }
 
-    public static class DeleteStatByDateAsyncTask extends AsyncTask<Stat,Void,Void>{
+    private static class DeleteStatByDateAsyncTask extends AsyncTask<LocalDate, Void, Void> {
 
-        private StatDao statDao;
+        private final StatDao mStatDao;
 
         private DeleteStatByDateAsyncTask(StatDao statDao) {
-            this.statDao = statDao;
+            this.mStatDao = statDao;
         }
 
         @Override
-        protected Void doInBackground(Stat... stats) {
+        protected Void doInBackground(LocalDate... dates) {
+            mStatDao.deleteStatByDate(dates[0]);
             return null;
         }
     }
 
-    public static class DeleteAllStatsAsyncTask extends AsyncTask<Stat,Void,Void>{
+    private static class DeleteAllStatsAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private StatDao statDao;
+        private final StatDao mStatDao;
 
         private DeleteAllStatsAsyncTask(StatDao statDao) {
-            this.statDao = statDao;
+            this.mStatDao = statDao;
         }
 
         @Override
-        protected Void doInBackground(Stat... stats) {
+        protected Void doInBackground(Void... voids) {
+            mStatDao.deleteAllStats();
             return null;
         }
     }

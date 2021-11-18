@@ -25,7 +25,7 @@ import java.util.List;
 public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem, CompletedExerciseAdapter.CompletedExerciseHolder> {
 
     // Adaptor fields
-    private OnItemClickListener mOnClickListener;
+    private final OnItemClickListener mOnClickListener;
 
 
     // Adaptor constructor
@@ -50,12 +50,12 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
     class CompletedExerciseHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         // View holder fields
-        private ImageView mCompletedExerciseTypeIcon;
-        private MaterialTextView mCompletedExerciseName;
-        private MaterialTextView mCompletedExerciseDescription;
-        private MaterialTextView mCompletedExerciseHasNote;
-        private MaterialCardView mCompletedExerciseCardView;
-        private View mCompletedExerciseDivider;
+        private final ImageView mCompletedExerciseTypeIcon;
+        private final MaterialTextView mCompletedExerciseName;
+        private final MaterialTextView mCompletedExerciseDescription;
+        private final MaterialTextView mCompletedExerciseHasNote;
+        private final MaterialCardView mCompletedExerciseCardView;
+        private final View mCompletedExerciseDivider;
 
         // View holder constructor
         CompletedExerciseHolder(View itemView) {
@@ -144,11 +144,7 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
         holder.mCompletedExerciseHasNote.setText(formattedNote);
         holder.mCompletedExerciseName.setText(currentCompletedExerciseItem.getMExerciseName());
         holder.mCompletedExerciseDescription.setText(description.toString());
-        if (currentCompletedExerciseItem.isChecked()) {
-            holder.mCompletedExerciseCardView.setChecked(true);
-        } else {
-            holder.mCompletedExerciseCardView.setChecked(false);
-        }
+        holder.mCompletedExerciseCardView.setChecked(currentCompletedExerciseItem.isChecked());
     }
 
     @Override

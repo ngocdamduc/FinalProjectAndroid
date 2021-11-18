@@ -136,11 +136,7 @@ public class CustomFragment extends Fragment {
                             Navigation.findNavController(view).navigate(R.id.to_session, bundle);
                         }
                     } else if (view.getId() == R.id.available_exercise_favorite_iv) {
-                        if (currentAvailableExercise.isFavorite()) {
-                            currentAvailableExercise.setFavorite(false);
-                        } else {
-                            currentAvailableExercise.setFavorite(true);
-                        }
+                        currentAvailableExercise.setFavorite(!currentAvailableExercise.isFavorite());
                         mViewModel.update(currentAvailableExercise);
                         mAdapter.notifyDataSetChanged();
                     }
@@ -179,11 +175,7 @@ public class CustomFragment extends Fragment {
                 for (AvailableExerciseItem  availableItem : mAdapter.getCurrentList()) {
                     checkedItemList.add(new AvailableExerciseItem(availableItem));
                 }
-                if (currentAvailableItem.isChecked()) {
-                    checkedItemList.get(position).setChecked(false);
-                } else {
-                    checkedItemList.get(position).setChecked(true);
-                }
+                checkedItemList.get(position).setChecked(!currentAvailableItem.isChecked());
                 mAdapter.submitList(checkedItemList);
                 return true;
             }
@@ -207,7 +199,7 @@ public class CustomFragment extends Fragment {
     }
 
     // Setup action mode
-    private ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
+    private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             mode.getMenuInflater().inflate(R.menu.delete_menu, menu);

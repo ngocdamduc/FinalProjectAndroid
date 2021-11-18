@@ -39,7 +39,6 @@
     <string name="rep">Rep(s)</string>
     <string name="Kilogram">kg</string>
     <string name="new_set">New Set</string>
-    <string name="weight">Weight(kg)</string>
     <!-- Favorite Fragment -->
     <string name="favorite_instructions_image_description">Image of hearts.</string>
     <string name="favorite_image_description">Image of a heart.</string>
@@ -78,4 +77,10 @@
     <string name="media_name">HUAWEI Ads</string>
     <string name="ad_id_splash">testd7c5cewoj6</string>
     <string name="ad_id_splash_landscape">testq6zq98hecj</string>
+    <string name="username">Username</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="food">Food</string>
+    <string name="total_kcal">500 kcal</string>
+    <string name="signout">Sign Out</string>
 </resources>

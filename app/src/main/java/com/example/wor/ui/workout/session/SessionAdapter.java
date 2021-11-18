@@ -20,8 +20,8 @@ import com.google.android.material.textfield.TextInputEditText;
 public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionHolder> {
 
     // Adapter Fields
-    private OnItemLongClickListener mListener;
-    private ExerciseType mExerciseType;
+    private final OnItemLongClickListener mListener;
+    private final ExerciseType mExerciseType;
 
     // Conditional Fields
     private boolean mOnActivityCreated;
@@ -176,11 +176,7 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
                     break;
             }
         }
-        if (currentSession.isChecked()) {
-            holder.mSessionCardView.setChecked(true);
-        } else {
-            holder.mSessionCardView.setChecked(false);
-        }
+        holder.mSessionCardView.setChecked(currentSession.isChecked());
 
         // Set read-only fields in delete action mode
         if (currentSession.isReadOnly()) {

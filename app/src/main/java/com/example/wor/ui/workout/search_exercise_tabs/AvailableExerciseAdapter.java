@@ -22,7 +22,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
 
     // Adaptor fields
     private List<AvailableExerciseItem> mAvailableExerciseItemsFull = new ArrayList<>();
-    private OnItemClickListener mListener;
+    private final OnItemClickListener mListener;
 
     // Adaptor constructor
     AvailableExerciseAdapter(OnItemClickListener listener) {
@@ -45,9 +45,9 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
     class AvailableExerciseHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         // View holder fields
-        private TextView mAvailableExerciseName;
-        private ImageView mAvailableExerciseFavorite;
-        private MaterialCardView mAvailableExerciseCardView;
+        private final TextView mAvailableExerciseName;
+        private final ImageView mAvailableExerciseFavorite;
+        private final MaterialCardView mAvailableExerciseCardView;
 
         // View holder constructor
         AvailableExerciseHolder(View itemView) {
@@ -88,11 +88,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
         holder.mAvailableExerciseName.setText(currentAvailableExerciseItem.getMExerciseName());
         if (currentAvailableExerciseItem.isCustom()) {
             holder.mAvailableExerciseCardView.setCheckable(true);
-            if (currentAvailableExerciseItem.isChecked()) {
-                holder.mAvailableExerciseCardView.setChecked(true);
-            } else {
-                holder.mAvailableExerciseCardView.setChecked(false);
-            }
+            holder.mAvailableExerciseCardView.setChecked(currentAvailableExerciseItem.isChecked());
         }
         if (currentAvailableExerciseItem.isFavorite()) {
             holder.mAvailableExerciseFavorite.setImageResource(R.drawable.ic_favorite_pressed);
@@ -121,7 +117,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
         return availableExerciseFilter;
     }
 
-    private Filter availableExerciseFilter = new Filter() {
+    private final Filter availableExerciseFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<AvailableExerciseItem> filteredList = new ArrayList<>();

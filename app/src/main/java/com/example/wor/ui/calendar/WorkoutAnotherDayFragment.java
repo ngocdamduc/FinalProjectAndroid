@@ -1,4 +1,4 @@
-package com.example.wor.ui.workout;
+package com.example.wor.ui.calendar;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -17,27 +17,36 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wor.MainActivity;
 import com.example.wor.R;
 import com.example.wor.room.CompletedExerciseItem;
 import com.example.wor.room.ExerciseType;
 import com.example.wor.room.TypeConverters;
+import com.example.wor.ui.workout.CompletedExerciseAdapter;
+import com.example.wor.ui.workout.WorkoutViewModel;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.FormatStyle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutTodayFragment extends Fragment {
+public class WorkoutAnotherDayFragment extends Fragment {
 
     // Static fields
-    private static final String TAG = "WorkoutTodayFragment";
+    private static final String TAG = "WorkoutAnotherDayFragment";
+
+    // Input fields
+    private LocalDate mCurrentDateInput;
 
     // UI fields
     private RecyclerView mCompletedExerciseRV;
@@ -52,7 +61,7 @@ public class WorkoutTodayFragment extends Fragment {
     // View model fields
     private WorkoutViewModel mViewModel;
 
-    public WorkoutTodayFragment() {
+    public WorkoutAnotherDayFragment() {
     }
 
     @Override
@@ -60,23 +69,40 @@ public class WorkoutTodayFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // To enable menu for this fragment
         setHasOptionsMenu(true);
+        // Parse through bundle
+        if (getArguments() != null) {
+            mCurrentDateInput = TypeConverters.stringToDate(getArguments().getString(MainActivity.DATE_INFO));
+        }
+        NavArgument dateArgument = new NavArgument.Builder().setDefaultValue(TypeConverters.dateToString(mCurrentDateInput)).build();
+        if (getActivity() != null) {
+            NavDestination navDestination = ((MainActivity)getActivity()).getNavController().getCurrentDestination();
+            if (navDestination != null) {
+                navDestination.addArgument(MainActivity.DATE_INFO, dateArgument);
+            } else {
+                Log.e(TAG, "onCreate: Could not get reference to current destination");
+            }
+        } else {
+            Log.e(TAG, "onCreate: Could not get reference to activity");
+        }
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         // Initialize fields and variables
-        View root = inflater.inflate(R.layout.fragment_workout_today, container, false);
-        mCompletedExerciseRV = root.findViewById(R.id.today_completed_exercise_rv);
-        MaterialToolbar toolbar = root.findViewById(R.id.workout_today_tb);
-        mWorkoutInstructionsIV = root.findViewById(R.id.today_workout_instruction_iv);
-        mWorkoutInstructionsTV = root.findViewById(R.id.today_workout_instruction_tv);
+        View root = inflater.inflate(R.layout.fragment_workout_another_day, container, false);
+        mCompletedExerciseRV = root.findViewById(R.id.another_day_completed_exercise_rv);
+        MaterialToolbar toolbar = root.findViewById(R.id.workout_another_day_tb);
+        mWorkoutInstructionsIV = root.findViewById(R.id.another_day_workout_instruction_iv);
+        mWorkoutInstructionsTV = root.findViewById(R.id.another_day_workout_instruction_tv);
 
         // Setup app tool bar
         if (getActivity() != null) {
             ((MainActivity)getActivity()).setSupportActionBar(toolbar);
             ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setDisplayShowTitleEnabled(false);
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                String formattedCurrentDate = mCurrentDateInput.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+                actionBar.setTitle(formattedCurrentDate);
             } else {
                 Log.e(TAG, "onCreateView: Could not get reference to support action bar");
             }
@@ -99,6 +125,8 @@ public class WorkoutTodayFragment extends Fragment {
                     CompletedExerciseItem currentCompletedExercise = mAdapter.getExerciseItem(position);
                     ArrayList<String> exerciseInfo = new ArrayList<>();
                     Bundle bundle = new Bundle();
+                    String dateInfo = TypeConverters.dateToString(mCurrentDateInput);
+                    bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     switch (currentCompletedExercise.getMExerciseType()) {
                         case CALISTHENICS:
                             exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(ExerciseType.CALISTHENICS)));
@@ -114,11 +142,9 @@ public class WorkoutTodayFragment extends Fragment {
                     exerciseInfo.add(Integer.toString(currentCompletedExercise.getMId()));
                     exerciseInfo.add(TypeConverters.sessionListToString(currentCompletedExercise.getMListOfSessions()));
                     exerciseInfo.add(currentCompletedExercise.getMNote());
-                    String dateInfo = TypeConverters.dateToString(LocalDate.now());
-                    bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     bundle.putStringArrayList(MainActivity.EXERCISE_INFO, exerciseInfo);
                     NavDestination currentDestination = Navigation.findNavController(view).getCurrentDestination();
-                    if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_workout_today) {
+                    if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_workout_another_day) {
                         Navigation.findNavController(view).navigate(R.id.to_session, bundle);
                     }
                 }
@@ -155,7 +181,7 @@ public class WorkoutTodayFragment extends Fragment {
 
         // Observe live data
         mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
-        mViewModel.getAllCompletedExercisesByDate(LocalDate.now()).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
+        mViewModel.getAllCompletedExercisesByDate(mCurrentDateInput).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
             if (completedExerciseItems.size() != 0) {
                 mWorkoutInstructionsIV.setVisibility(View.GONE);
                 mWorkoutInstructionsTV.setVisibility(View.GONE);
@@ -164,12 +190,10 @@ public class WorkoutTodayFragment extends Fragment {
                 mWorkoutInstructionsTV.setVisibility(View.VISIBLE);
             }
             mAdapter.submitList(completedExerciseItems);
-
         });
     }
 
     // Setup action mode
-
     private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -229,4 +253,17 @@ public class WorkoutTodayFragment extends Fragment {
             }
         }
     };
+
+    // Menu items selected listener
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (getActivity() != null) {
+                ((MainActivity)getActivity()).getNavController().popBackStack();
+            } else {
+                Log.e(TAG, "onOptionsItemSelected: Could not get reference to activity");
+            }
+        }
+        return true;
+    }
 }
