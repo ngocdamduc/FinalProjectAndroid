@@ -27,7 +27,7 @@ import com.example.wor.room.ExerciseType;
 import com.example.wor.room.TypeConverters;
 import com.example.wor.ui.workout.WorkoutViewModel;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ import java.util.List;
 public class FavoriteFragment extends Fragment {
 
     // Input fields
-    private LocalDate mCurrentDateInput;
+    private LocalDateTime mCurrentDateInput;
     private ExerciseType mExerciseTypeInput;
 
     // UI fields
@@ -52,10 +52,10 @@ public class FavoriteFragment extends Fragment {
     }
 
     // New instance constructor
-    static FavoriteFragment newInstance(LocalDate currentDateInput, ExerciseType exerciseTypeInput) {
+    static FavoriteFragment newInstance(LocalDateTime currentDateInput, ExerciseType exerciseTypeInput) {
         FavoriteFragment fragment = new FavoriteFragment();
         Bundle bundle = new Bundle();
-        String dateInfo = TypeConverters.dateToString(currentDateInput);
+        String dateInfo = TypeConverters.dateTimeToString(currentDateInput);
         bundle.putString(MainActivity.DATE_INFO, dateInfo);
         ArrayList<String> exerciseInfo = new ArrayList<>();
         exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(exerciseTypeInput)));
@@ -102,7 +102,7 @@ public class FavoriteFragment extends Fragment {
                 AvailableExerciseItem currentAvailableExercise = mAdapter.getExerciseItem(position);
                 if (view.getId() == R.id.available_exercise_name_tv) {
                     Bundle bundle = new Bundle();
-                    String dateInfo = TypeConverters.dateToString(mCurrentDateInput);
+                    String dateInfo = TypeConverters.dateTimeToString(mCurrentDateInput);
                     bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     ArrayList<String> exerciseInfo = new ArrayList<>();
                     exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(mExerciseTypeInput)));

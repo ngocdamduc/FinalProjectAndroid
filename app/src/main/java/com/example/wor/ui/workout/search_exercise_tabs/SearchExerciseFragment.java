@@ -20,7 +20,7 @@ import com.example.wor.room.TypeConverters;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class SearchExerciseFragment extends Fragment {
     private static final String TAG = "SearchExerciseFragment";
 
     // Input fields
-    private LocalDate mCurrentDateInput;
+    private LocalDateTime mCurrentDateInput;
     private ExerciseType mExerciseTypeInput;
 
 

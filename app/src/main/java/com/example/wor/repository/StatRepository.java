@@ -10,6 +10,7 @@ import com.example.wor.room.StatDao;
 import com.example.wor.room.WORDatabase;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class StatRepository {
         new DeleteStatAsyncTask(mStatDao).execute(stat);
     }
 
-    public void deleteStatByDate(LocalDate date) {
+    public void deleteStatByDate(LocalDateTime date) {
         new DeleteStatByDateAsyncTask(mStatDao).execute(date);
     }
 
@@ -47,7 +48,7 @@ public class StatRepository {
         new DeleteAllStatsAsyncTask(mStatDao).execute();
     }
 
-    public LiveData<List<Stat>> getStatByDate(LocalDate date) { return mStatDao.getStatByDate(date); }
+    public LiveData<List<Stat>> getStatByDate(LocalDateTime date) { return mStatDao.getStatByDate(date); }
 
     public LiveData<List<Stat>> getAllStats() {
         return mAllStat;
@@ -99,7 +100,7 @@ public class StatRepository {
         }
     }
 
-    private static class DeleteStatByDateAsyncTask extends AsyncTask<LocalDate, Void, Void> {
+    private static class DeleteStatByDateAsyncTask extends AsyncTask<LocalDateTime, Void, Void> {
 
         private final StatDao mStatDao;
 
@@ -108,7 +109,7 @@ public class StatRepository {
         }
 
         @Override
-        protected Void doInBackground(LocalDate... dates) {
+        protected Void doInBackground(LocalDateTime... dates) {
             mStatDao.deleteStatByDate(dates[0]);
             return null;
         }

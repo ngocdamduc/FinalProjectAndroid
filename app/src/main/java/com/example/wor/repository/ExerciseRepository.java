@@ -12,6 +12,7 @@ import com.example.wor.room.ExerciseType;
 import com.example.wor.room.WORDatabase;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
 
@@ -133,7 +134,7 @@ public class ExerciseRepository {
         new DeleteCompletedExerciseAsyncTask(mCompletedExerciseDao).execute(completedExerciseItem);
     }
 
-    public void deleteAllCompletedExerciseByDate(LocalDate date) {
+    public void deleteAllCompletedExerciseByDate(LocalDateTime date) {
         new DeleteAllCompletedExerciseByDateAsyncTask(mCompletedExerciseDao).execute(date);
     }
 
@@ -141,7 +142,7 @@ public class ExerciseRepository {
         new DeleteAllCompletedExerciseAsyncTask(mCompletedExerciseDao).execute();
     }
 
-    public LiveData<List<CompletedExerciseItem>> getAllCompletedExerciseByDate(LocalDate date) { return mCompletedExerciseDao.getCompletedExerciseByDate(date); }
+    public LiveData<List<CompletedExerciseItem>> getAllCompletedExerciseByDate(LocalDateTime date) { return mCompletedExerciseDao.getCompletedExerciseByDate(date); }
 
     public LiveData<List<CompletedExerciseItem>> getAllCompletedExercises() {
         return mAllCompletedExercises;
@@ -193,7 +194,7 @@ public class ExerciseRepository {
         }
     }
 
-    private static class DeleteAllCompletedExerciseByDateAsyncTask extends AsyncTask<LocalDate, Void, Void> {
+    private static class DeleteAllCompletedExerciseByDateAsyncTask extends AsyncTask<LocalDateTime, Void, Void> {
 
         private final CompletedExerciseDao completedExerciseDao;
 
@@ -202,7 +203,7 @@ public class ExerciseRepository {
         }
 
         @Override
-        protected Void doInBackground(LocalDate... dates) {
+        protected Void doInBackground(LocalDateTime... dates) {
             completedExerciseDao.deleteAllCompletedExerciseByDate(dates[0]);
             return null;
         }

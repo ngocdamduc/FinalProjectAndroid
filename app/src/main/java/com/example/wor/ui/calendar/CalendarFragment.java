@@ -28,6 +28,7 @@ import com.kizitonwose.calendarview.ui.ViewContainer;
 
 import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.YearMonth;
 import org.threeten.bp.format.DateTimeFormatter;
 
@@ -38,7 +39,7 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
-    private Set<LocalDate> mWorkoutDates = new HashSet<>();
+    private Set<LocalDateTime> mWorkoutDates = new HashSet<org.threeten.bp.LocalDateTime>();
 
     // UI fields
     private CalendarView mCalendarView;

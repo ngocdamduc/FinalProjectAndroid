@@ -1,6 +1,8 @@
 package com.example.wor;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.view.View;
@@ -23,7 +25,7 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AndroidThreeTen.init(this);
+        if(Build.VERSION.SDK_INT!= Build.VERSION_CODES.O) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         // Initialize fields and variables
         mBottomNav = findViewById(R.id.nav_view);
         mAddFAB = findViewById(R.id.workout_add_fab);
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             } else if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_workout_today) {
-                String dateInfo = TypeConverters.dateToString(LocalDate.now());
+                String dateInfo = TypeConverters.dateTimeToString(LocalDateTime.now());
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             }
@@ -129,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             } else if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_workout_today) {
-                String dateInfo = TypeConverters.dateToString(LocalDate.now());
+                String dateInfo = TypeConverters.dateTimeToString(LocalDateTime.now());
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             }
@@ -147,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             } else if (currentDestination != null && currentDestination.getId() == R.id.navigation_to_workout_today) {
-                String dateInfo = TypeConverters.dateToString(LocalDate.now());
+                String dateInfo = TypeConverters.dateTimeToString(LocalDateTime.now());
                 bundle.putString(DATE_INFO, dateInfo);
                 mNavController.navigate(R.id.to_search_exercise, bundle);
             }
