@@ -34,7 +34,7 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
         mOnClickListener = listener;
     }
 
-    private static final DiffUtil.ItemCallback<CompletedExerciseItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<CompletedExerciseItem>() {
+    private static final DiffUtil.ItemCallback<CompletedExerciseItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
 
         @Override
         public boolean areItemsTheSame(@NonNull CompletedExerciseItem oldItem, @NonNull CompletedExerciseItem newItem) {

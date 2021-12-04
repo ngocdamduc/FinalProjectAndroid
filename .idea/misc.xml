@@ -79,6 +79,7 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/today_grid_background2.xml" value="0.25025641025641027" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/white_grid_background.xml" value="0.25416666666666665" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_splash.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_legend.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_lengend.xml" value="0.23802083333333332" />
@@ -99,8 +100,12 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_cardio_session.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_completed_exercise.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_session_set.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_strength_session_set.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/regular_workout_dot.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/delete_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/search_exercise_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/session_set_menu.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>

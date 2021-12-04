@@ -86,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
         android:contentDescription="@string/add" />
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
