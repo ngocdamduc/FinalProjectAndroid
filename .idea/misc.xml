@@ -80,9 +80,11 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/drawable/white_grid_background.xml" value="0.25416666666666665" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_splash.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/activity_stats_acivity.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_legend.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/calendar_day_lengend.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/error_toast.xml" value="0.23435897435897435" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_add_stat_dialog.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_browse.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/fragment_calendar.xml" value="0.23802083333333332" />
@@ -100,6 +102,7 @@
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_cardio_session.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_completed_exercise.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_session_set.xml" value="0.23802083333333332" />
+        <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_stats.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/item_strength_session_set.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/layout/regular_workout_dot.xml" value="0.23802083333333332" />
         <entry key="..\:/WORWorkoutManagemnent/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />

@@ -120,7 +120,7 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
                 description.append(currentInfo);
             }
         } else if (currentCompletedExerciseItem.getMExerciseType() == ExerciseType.CALISTHENICS) {
-            holder.mCompletedExerciseTypeIcon.setImageResource(R.drawable.ic_calistenics_session);
+            holder.mCompletedExerciseTypeIcon.setImageResource(R.drawable.ic_calisthenics_session);
             for (int i=0; i<listOfSessions.size(); i++) {
                 String repOrReps = (listOfSessions.get(i).getReps() == 1) ? " rep" : " reps";
                 if (i == listOfSessions.size() -1) {
