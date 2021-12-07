@@ -42,7 +42,7 @@
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@id/cardio_session_fab"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_calistenics_session"
+        app:srcCompat="@drawable/ic_calisthenics_session"
         android:contentDescription="@string/calisthenics" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cardio_session_fab"
