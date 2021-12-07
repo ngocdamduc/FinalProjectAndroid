@@ -3,6 +3,7 @@ package com.example.wor.room;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.threeten.bp.LocalDate;
@@ -23,6 +24,7 @@ public class Stat {
     private int mHeight;
 
     // Empty constructor
+    @Ignore
     public Stat() {
     }
 

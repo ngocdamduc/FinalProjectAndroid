@@ -72,13 +72,13 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
 
         @Override
         public void onClick(View view) {
-            if (mOnClickListener != null) mOnClickListener.onClick(view, getAdapterPosition());
+            if (mOnClickListener != null) mOnClickListener.onClick(view, getAbsoluteAdapterPosition());
         }
 
         @Override
         public boolean onLongClick(View view) {
             if (mOnClickListener != null) {
-                return mOnClickListener.onLongClick(view, getAdapterPosition());
+                return mOnClickListener.onLongClick(view, getAbsoluteAdapterPosition());
             }
             return false;
         }

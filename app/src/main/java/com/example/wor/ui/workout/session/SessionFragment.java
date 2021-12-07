@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -108,7 +108,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
                 resource = R.layout.fragment_calisthenics_session;
         }
         View root = inflater.inflate(resource, container, false);
-        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         switch (mExerciseTypeInput) {
             case CARDIO:
                 mToolbar = root.findViewById(R.id.cardio_session_tb);

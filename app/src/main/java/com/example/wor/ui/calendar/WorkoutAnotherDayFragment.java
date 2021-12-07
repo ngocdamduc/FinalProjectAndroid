@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavArgument;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -180,7 +180,7 @@ public class WorkoutAnotherDayFragment extends Fragment {
         mCompletedExerciseRV.setAdapter(mAdapter);
 
         // Observe live data
-        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mViewModel.getAllCompletedExercisesByDate(mCurrentDateInput).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
             if (completedExerciseItems.size() != 0) {
                 mWorkoutInstructionsIV.setVisibility(View.GONE);

@@ -16,6 +16,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class NoteDialogFragment extends AppCompatDialogFragment {
@@ -67,7 +68,7 @@ public class NoteDialogFragment extends AppCompatDialogFragment {
 
         // On click listeners
         saveButton.setOnClickListener((View saveButtonView) -> {
-            mNoteInput = mExerciseNoteTIET.getText().toString();
+            mNoteInput = Objects.requireNonNull(mExerciseNoteTIET.getText()).toString();
             mListener.sendNote(mNoteInput);
             dismiss();
         });

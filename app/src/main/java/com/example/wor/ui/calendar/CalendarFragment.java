@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 
@@ -39,11 +39,7 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
-<<<<<<< HEAD
     private final Set<LocalDate> mWorkoutDates = new HashSet<>();
-=======
-    private Set<LocalDate> mWorkoutDates = new HashSet<>();
->>>>>>> parent of 2e0ada2... Merge remote-tracking branch 'origin/master'
 
     // UI fields
     private CalendarView mCalendarView;
@@ -152,7 +148,7 @@ public class CalendarFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // Observe live data
-        WorkoutViewModel mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        WorkoutViewModel mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mViewModel.getAllCompletedExercises().observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
             for (CompletedExerciseItem completedExerciseItem : completedExerciseItems) {
                 mWorkoutDates.add(completedExerciseItem.getMExerciseDate());

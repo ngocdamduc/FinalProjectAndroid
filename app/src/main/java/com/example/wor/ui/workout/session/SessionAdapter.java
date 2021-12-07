@@ -17,6 +17,8 @@ import com.example.wor.room.Session;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionHolder> {
 
     // Adapter Fields
@@ -156,22 +158,22 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
         } else {
             switch (mExerciseType) {
                 case CALISTHENICS:
-                    holder.mRepTIET.getText().clear();
+                    Objects.requireNonNull(holder.mRepTIET.getText()).clear();
                     break;
                 case CARDIO:
                     if (currentSession.getDuration() <1) {
-                        holder.mDurationTIET.getText().clear();
+                        Objects.requireNonNull(holder.mDurationTIET.getText()).clear();
                     }
                     if (currentSession.getIntensity() <1) {
-                        holder.mIntensityTIET.getText().clear();
+                        Objects.requireNonNull(holder.mIntensityTIET.getText()).clear();
                     }
                     break;
                 case STRENGTH:
                     if (currentSession.getReps() <1) {
-                        holder.mRepTIET.getText().clear();
+                        Objects.requireNonNull(holder.mRepTIET.getText()).clear();
                     }
                     if (currentSession.getWeight() <1) {
-                        holder.mWeightTIET.getText().clear();
+                        Objects.requireNonNull(holder.mWeightTIET.getText()).clear();
                     }
                     break;
             }
