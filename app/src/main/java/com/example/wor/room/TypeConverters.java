@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -31,14 +32,13 @@ public class TypeConverters {
     }
 
     @TypeConverter
-    public static LocalDate stringToDate(String data) {
+    public static LocalDateTime stringToDate(String data) {
         if (data == null) {
             return null;
         } else {
-            return LocalDate.parse(data);
+            return LocalDateTime.parse(data);
         }
     }
-
     @TypeConverter
     public static String dateToString(LocalDate date) {
         if (date == null) {
@@ -47,6 +47,15 @@ public class TypeConverters {
             return date.toString();
         }
     }
+    @TypeConverter
+    public static String dateTimeToString(LocalDateTime date) {
+        if (date == null) {
+            return null;
+        } else {
+            return date.toString();
+        }
+    }
+
 
     @TypeConverter
     public static ExerciseType intToExerciseType(int exerciseType) {
@@ -65,4 +74,6 @@ public class TypeConverters {
     public static int exerciseTypeToInt(ExerciseType exerciseType) {
         return exerciseType.getCategory();
     }
+
+
 }

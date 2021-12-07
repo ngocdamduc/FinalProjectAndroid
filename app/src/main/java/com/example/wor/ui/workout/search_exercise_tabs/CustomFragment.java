@@ -32,7 +32,7 @@ import com.example.wor.ui.workout.WorkoutViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class CustomFragment extends Fragment {
     private static final String TAG = "CustomFragment";
 
     // Input fields
-    private LocalDate mCurrentDateInput;
+    private LocalDateTime mCurrentDateInput;
     private ExerciseType mExerciseTypeInput;
 
     // UI fields
@@ -65,10 +65,10 @@ public class CustomFragment extends Fragment {
     }
 
     // New instance constructor
-    static CustomFragment newInstance(LocalDate currentDateInput, ExerciseType exerciseTypeInput) {
+    static CustomFragment newInstance(LocalDateTime currentDateInput, ExerciseType exerciseTypeInput) {
         CustomFragment fragment = new CustomFragment();
         Bundle bundle = new Bundle();
-        String dateInfo = TypeConverters.dateToString(currentDateInput);
+        String dateInfo = TypeConverters.dateTimeToString(currentDateInput);
         bundle.putString(MainActivity.DATE_INFO, dateInfo);
         ArrayList<String> exerciseInfo = new ArrayList<>();
         exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(exerciseTypeInput)));
@@ -125,7 +125,7 @@ public class CustomFragment extends Fragment {
                     AvailableExerciseItem currentAvailableExercise = mAdapter.getExerciseItem(position);
                     if (view.getId() == R.id.available_exercise_name_tv) {
                         Bundle bundle = new Bundle();
-                        String dateInfo = TypeConverters.dateToString(mCurrentDateInput);
+                        String dateInfo = TypeConverters.dateTimeToString(mCurrentDateInput);
                         bundle.putString(MainActivity.DATE_INFO, dateInfo);
                         ArrayList<String> exerciseInfo = new ArrayList<>();
                         exerciseInfo.add(Integer.toString(TypeConverters.exerciseTypeToInt(mExerciseTypeInput)));

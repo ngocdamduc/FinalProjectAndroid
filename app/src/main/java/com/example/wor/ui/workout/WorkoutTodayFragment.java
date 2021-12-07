@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +29,7 @@ import com.example.wor.room.TypeConverters;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +114,7 @@ public class WorkoutTodayFragment extends Fragment {
                     exerciseInfo.add(Integer.toString(currentCompletedExercise.getMId()));
                     exerciseInfo.add(TypeConverters.sessionListToString(currentCompletedExercise.getMListOfSessions()));
                     exerciseInfo.add(currentCompletedExercise.getMNote());
-                    String dateInfo = TypeConverters.dateToString(LocalDate.now());
+                    String dateInfo = TypeConverters.dateTimeToString(LocalDateTime.now());
                     bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     bundle.putStringArrayList(MainActivity.EXERCISE_INFO, exerciseInfo);
                     NavDestination currentDestination = Navigation.findNavController(view).getCurrentDestination();
@@ -154,8 +154,8 @@ public class WorkoutTodayFragment extends Fragment {
         mCompletedExerciseRV.setAdapter(mAdapter);
 
         // Observe live data
-        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
-        mViewModel.getAllCompletedExercisesByDate(LocalDate.now()).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
+        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel.getAllCompletedExercisesByDate(LocalDateTime.now()).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
             if (completedExerciseItems.size() != 0) {
                 mWorkoutInstructionsIV.setVisibility(View.GONE);
                 mWorkoutInstructionsTV.setVisibility(View.GONE);

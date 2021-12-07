@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
 
@@ -25,13 +25,13 @@ public interface CompletedExerciseDao {
     void delete(CompletedExerciseItem completedExerciseItem);
 
     @Query("DELETE FROM completed_exercise_table WHERE exercise_date = :date")
-    void deleteAllCompletedExerciseByDate(LocalDate date);
+    void deleteAllCompletedExerciseByDate(LocalDateTime date);
 
     @Query("DELETE FROM completed_exercise_table")
     void deleteAllCompletedExercises();
 
     @Query("SELECT * FROM completed_exercise_table WHERE exercise_date = :date")
-    LiveData<List<CompletedExerciseItem>> getCompletedExerciseByDate(LocalDate date);
+    LiveData<List<CompletedExerciseItem>> getCompletedExerciseByDate(LocalDateTime date);
 
     @Query("SELECT * FROM completed_exercise_table")
     LiveData<List<CompletedExerciseItem>> getAllCompletedExercises();
