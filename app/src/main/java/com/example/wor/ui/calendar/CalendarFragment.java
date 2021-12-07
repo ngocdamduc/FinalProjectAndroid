@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDestination;
@@ -38,7 +39,7 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
-    private Set<LocalDate> mWorkoutDates = new HashSet<>();
+    private final Set<LocalDate> mWorkoutDates = new HashSet<>();
 
     // UI fields
     private CalendarView mCalendarView;
@@ -71,9 +72,9 @@ public class CalendarFragment extends Fragment {
 
             // Fields
             private CalendarDay mCalendarDay;
-            private TextView mCalendarDayTV;
-            private View mCalendarDotV;
-            private FrameLayout mCalendarDayBackgroundFL;
+            private final TextView mCalendarDayTV;
+            private final View mCalendarDotV;
+            private final FrameLayout mCalendarDayBackgroundFL;
 
             private DayViewContainer(@NonNull View view) {
                 super(view);
@@ -113,15 +114,15 @@ public class CalendarFragment extends Fragment {
                 viewContainer.mCalendarDayTV.setText(day);
                 if (calendarDay.getOwner() == DayOwner.THIS_MONTH) {
                     if (calendarDay.getDate().equals(LocalDate.now())) {
-                        viewContainer.mCalendarDayBackgroundFL.setBackground(getResources().getDrawable(R.drawable.today_grid_background, null));
+                        viewContainer.mCalendarDayBackgroundFL.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.today_grid_background, null));
                     } else {
-                        viewContainer.mCalendarDayBackgroundFL.setBackground(getResources().getDrawable(R.drawable.white_grid_background, null));
+                        viewContainer.mCalendarDayBackgroundFL.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.white_grid_background, null));
                     }
                 } else {
                     if (calendarDay.getDate().equals(LocalDate.now())) {
-                        viewContainer.mCalendarDayBackgroundFL.setBackground(getResources().getDrawable(R.drawable.today_grid_background2, null));
+                        viewContainer.mCalendarDayBackgroundFL.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.today_grid_background2, null));
                     } else {
-                        viewContainer.mCalendarDayBackgroundFL.setBackground(getResources().getDrawable(R.drawable.gray_grid_background, null));
+                        viewContainer.mCalendarDayBackgroundFL.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.gray_grid_background, null));
                         viewContainer.mCalendarDayTV.setTextColor(getResources().getColor(R.color.gray, null));
                     }
                 }

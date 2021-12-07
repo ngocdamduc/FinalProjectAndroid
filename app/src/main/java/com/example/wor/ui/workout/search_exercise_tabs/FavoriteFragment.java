@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -83,7 +83,7 @@ public class FavoriteFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         // Initialize fields and variables
         View root = inflater.inflate(R.layout.fragment_favorite, container, false);
-        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mAvailableExerciseRV = root.findViewById(R.id.favorite_exercise_list_rv);
         mFavoriteInstructionsTV = root.findViewById(R.id.favorite_instructions_tv);
         mFavoriteInstructionsIV = root.findViewById(R.id.favorite_instructions_iv);

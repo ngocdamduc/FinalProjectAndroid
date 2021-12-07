@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wor.MainActivity;
 import com.example.wor.R;
@@ -104,7 +104,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
         mUpdateButton.setOnClickListener((View view) -> startDialogFragment());
 
         // Observe live data
-        mViewModel = ViewModelProviders.of(this).get(StatsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(StatsViewModel.class);
         mViewModel.getAllStats().observe(getViewLifecycleOwner(), (List<Stat> stats) -> {
 
             // No data formatting
@@ -134,7 +134,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
                 mShouldUpdate = true;
                 mWeightInput = lastEntry.getMWeight() + "";
                 if (lastEntry.getMWeight() != MainActivity.EMPTY) {
-                    String displayWeight = mWeightInput + " lbs";
+                    String displayWeight = mWeightInput + " kg";
                     mWeightInputTV.setText(displayWeight);
                 } else {
                     mWeightInputTV.setText(getResources().getString(R.string.none));
@@ -337,7 +337,6 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
 
         });
     }
-
     @Override
     public void sendStat(int weight, int height) {
         if (mShouldUpdate) {
@@ -346,7 +345,6 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
             mViewModel.insert(new Stat(LocalDate.now(), weight, height));
         }
     }
-
     // Other methods
 
     private void startDialogFragment() {

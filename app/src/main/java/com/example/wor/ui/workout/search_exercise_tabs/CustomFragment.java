@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -183,7 +183,7 @@ public class CustomFragment extends Fragment {
         mAvailableExerciseRV.setAdapter(mAdapter);
 
         // Observe live data
-        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mViewModel.getAllCustomAvailableExercise(true, mExerciseTypeInput).observe(getViewLifecycleOwner(), (List<AvailableExerciseItem> availableCustomExerciseItems) -> {
             mAdapter.setFullList(availableCustomExerciseItems);
             mAdapter.submitList(availableCustomExerciseItems);

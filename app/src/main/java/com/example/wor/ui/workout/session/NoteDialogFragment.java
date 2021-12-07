@@ -28,7 +28,7 @@ public class NoteDialogFragment extends AppCompatDialogFragment {
     private TextInputEditText mExerciseNoteTIET;
 
     // Listener
-    private NoteListener mListener;
+    private NoteListener mListener = (NoteListener) getTargetFragment();
 
     // Empty constructor
     public NoteDialogFragment() {

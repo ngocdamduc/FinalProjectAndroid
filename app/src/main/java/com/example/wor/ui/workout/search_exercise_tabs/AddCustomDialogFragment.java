@@ -10,7 +10,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wor.MainActivity;
 import com.example.wor.R;
@@ -22,6 +22,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AddCustomDialogFragment extends AppCompatDialogFragment {
 
@@ -58,14 +59,14 @@ public class AddCustomDialogFragment extends AppCompatDialogFragment {
             ArrayList<String> exerciseInfo = getArguments().getStringArrayList(MainActivity.EXERCISE_INFO);
             if (exerciseInfo != null) mExerciseTypeInput = TypeConverters.intToExerciseType(Integer.parseInt(exerciseInfo.get(0)));
         }
-        mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mExerciseNameTIET = view.findViewById(R.id.add_custom_exercise_name_tiet);
         MaterialButton saveButton = view.findViewById(R.id.save_custom_btn);
         MaterialButton cancelButton = view.findViewById(R.id.cancel_custom_btn);
 
         // On click listeners
         saveButton.setOnClickListener((View saveButtonView) -> {
-            if (mExerciseNameTIET.getText().toString().equals("")) {
+            if (Objects.requireNonNull(mExerciseNameTIET.getText()).toString().equals("")) {
                 mExerciseNameTIET.setError(getString(R.string.toast_error_message));
             } else {
                 mViewModel.insert(new AvailableExerciseItem(mExerciseTypeInput, mExerciseNameTIET.getText().toString(), false, true));

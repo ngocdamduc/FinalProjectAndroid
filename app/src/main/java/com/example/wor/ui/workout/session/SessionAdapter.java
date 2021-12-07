@@ -35,7 +35,7 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
         mExerciseType = exerciseType;
     }
 
-    private static final DiffUtil.ItemCallback<Session> DIFF_CALLBACK = new DiffUtil.ItemCallback<Session>() {
+    private static final DiffUtil.ItemCallback<Session> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
 
         @Override
         public boolean areItemsTheSame(@NonNull Session oldItem, @NonNull Session newItem) {
@@ -98,7 +98,7 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
         @Override
         public boolean onLongClick(View view) {
             if (mListener != null) {
-                return mListener.onLongClick(view, getAdapterPosition());
+                return mListener.onLongClick(view, getAbsoluteAdapterPosition());
             }
             return false;
         }
@@ -127,13 +127,13 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
     @Override
     public void onBindViewHolder(@NonNull SessionHolder holder, int position) {
         // Update position for text listener
-        holder.mFirstEditTextListener.updatePosition(holder.getAdapterPosition());
+        holder.mFirstEditTextListener.updatePosition(holder.getAbsoluteAdapterPosition());
         if (mExerciseType == ExerciseType.CARDIO || mExerciseType == ExerciseType.STRENGTH) {
-            holder.mSecondEditTextListener.updatePosition(holder.getAdapterPosition());
+            holder.mSecondEditTextListener.updatePosition(holder.getAbsoluteAdapterPosition());
         }
 
         // Set values for view
-        Session currentSession = getItem(holder.getAdapterPosition());
+        Session currentSession = getItem(holder.getAbsoluteAdapterPosition());
         if (!currentSession.isEmpty()) {
             switch (mExerciseType) {
                 case CALISTHENICS:
@@ -211,7 +211,7 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
 
         // Request focus on initial exercise creation or new set
         if (mOnActivityCreated  || mOnNewSession) {
-            if (holder.getAdapterPosition() == getCurrentList().size()-1 ) {
+            if (holder.getAbsoluteAdapterPosition() == getCurrentList().size()-1 ) {
                 switch (mExerciseType) {
                     case STRENGTH:
                     case CALISTHENICS:
@@ -321,17 +321,14 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
                 }
             }
         }
-
         @Override
         public void afterTextChanged(Editable editable) {
         }
     }
-
     // Other adaptor methods
     Session getSessionItem(int position) {
         return getItem(position);
     }
-
     // On click interface
     public interface OnItemLongClickListener {
         boolean onLongClick(View view, int position);

@@ -30,7 +30,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
         mListener = listener;
     }
 
-    private static final DiffUtil.ItemCallback<AvailableExerciseItem> DIFF_CALLBACK= new DiffUtil.ItemCallback<AvailableExerciseItem>() {
+    private static final DiffUtil.ItemCallback<AvailableExerciseItem> DIFF_CALLBACK= new DiffUtil.ItemCallback<>() {
         @Override
         public boolean areItemsTheSame(@NonNull AvailableExerciseItem oldItem, @NonNull AvailableExerciseItem newItem) {
             return oldItem.getMExerciseName().equals(newItem.getMExerciseName());
@@ -62,13 +62,13 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
 
         @Override
         public void onClick(View view) {
-            if (mListener != null) mListener.onClick(view, getAdapterPosition());
+            if (mListener != null) mListener.onClick(view, getBindingAdapterPosition());
         }
 
         @Override
         public boolean onLongClick(View view) {
             if (mListener != null) {
-                return mListener.onLongClick(view, getAdapterPosition());
+                return mListener.onLongClick(view, getBindingAdapterPosition());
             }
             return false;
         }
@@ -120,7 +120,8 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
     private final Filter availableExerciseFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<AvailableExerciseItem> filteredList = new ArrayList<>();
+            List<AvailableExerciseItem> filteredList;
+            filteredList = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(mAvailableExerciseItemsFull);
             } else {
