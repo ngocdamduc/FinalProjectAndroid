@@ -39,7 +39,11 @@ import java.util.Set;
 public class CalendarFragment extends Fragment {
 
     // Input fields
+<<<<<<< HEAD
     private final Set<LocalDate> mWorkoutDates = new HashSet<>();
+=======
+    private Set<LocalDate> mWorkoutDates = new HashSet<>();
+>>>>>>> parent of 2e0ada2... Merge remote-tracking branch 'origin/master'
 
     // UI fields
     private CalendarView mCalendarView;

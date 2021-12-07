@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,9 +14,6 @@ import com.example.wor.MainActivity;
 import com.example.wor.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-
-import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -90,8 +86,6 @@ public class AddStatDialogFragment extends AppCompatDialogFragment {
         
         // On click listeners
         saveButton.setOnClickListener((View saveButtonView) -> {
-            String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"+"\t"+ "HH:mm:ss"));
-//            String formattedCurrentDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"+"\t"+ "HH:mm:ss"));
             int weight, fat;
             if (Objects.requireNonNull(mWeightTIET.getText()).toString().equals("")) {
                 weight = MainActivity.EMPTY;
@@ -103,10 +97,7 @@ public class AddStatDialogFragment extends AppCompatDialogFragment {
             } else {
                 fat = Integer.parseInt(mHeightTIET.getText().toString());
             }
-            mListener.sendStat(weight, fat, date);
-//            Toast.makeText(getActivity(), "alo", Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"+"\t"+ "HH:mm:ss")), Toast.LENGTH_LONG).show();
-
+            mListener.sendStat(weight, fat);
             dismiss();
         });
         cancelButton.setOnClickListener((cancelButtonView) -> dismiss());
@@ -137,6 +128,6 @@ public class AddStatDialogFragment extends AppCompatDialogFragment {
 
     // Note listener interface
     public interface StatListener {
-        void sendStat(int weight, int height, String date);
+        void sendStat(int weight, int height);
     }
 }

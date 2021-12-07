@@ -29,7 +29,7 @@ import com.example.wor.room.TypeConverters;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 
-import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +114,7 @@ public class WorkoutTodayFragment extends Fragment {
                     exerciseInfo.add(Integer.toString(currentCompletedExercise.getMId()));
                     exerciseInfo.add(TypeConverters.sessionListToString(currentCompletedExercise.getMListOfSessions()));
                     exerciseInfo.add(currentCompletedExercise.getMNote());
-                    String dateInfo = TypeConverters.dateTimeToString(LocalDateTime.now());
+                    String dateInfo = TypeConverters.dateToString(LocalDate.now());
                     bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     bundle.putStringArrayList(MainActivity.EXERCISE_INFO, exerciseInfo);
                     NavDestination currentDestination = Navigation.findNavController(view).getCurrentDestination();
@@ -155,7 +155,7 @@ public class WorkoutTodayFragment extends Fragment {
 
         // Observe live data
         mViewModel = ViewModelProviders.of(this).get(WorkoutViewModel.class);
-        mViewModel.getAllCompletedExercisesByDate(LocalDateTime.now()).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
+        mViewModel.getAllCompletedExercisesByDate(LocalDate.now()).observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
             if (completedExerciseItems.size() != 0) {
                 mWorkoutInstructionsIV.setVisibility(View.GONE);
                 mWorkoutInstructionsTV.setVisibility(View.GONE);

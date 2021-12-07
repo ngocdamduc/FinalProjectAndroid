@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalDate;
 
 import java.util.List;
 
@@ -25,13 +25,13 @@ public interface StatDao {
     void delete(Stat stat);
 
     @Query("DELETE FROM stat_table WHERE stat_date = :date")
-    void deleteStatByDate(LocalDateTime date);
+    void deleteStatByDate(LocalDate date);
 
     @Query("DELETE FROM stat_table")
     void deleteAllStats();
 
     @Query("SELECT * FROM stat_table WHERE stat_date = :date")
-    LiveData<List<Stat>> getStatByDate(LocalDateTime date);
+    LiveData<List<Stat>> getStatByDate(LocalDate date);
 
     @Query("SELECT * FROM stat_table")
     LiveData<List<Stat>> getAllStats();

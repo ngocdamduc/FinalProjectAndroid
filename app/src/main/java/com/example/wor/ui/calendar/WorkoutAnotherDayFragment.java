@@ -33,7 +33,7 @@ import com.example.wor.ui.workout.WorkoutViewModel;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 
-import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.FormatStyle;
 
@@ -46,7 +46,7 @@ public class WorkoutAnotherDayFragment extends Fragment {
     private static final String TAG = "WorkoutAnotherDayFragment";
 
     // Input fields
-    private LocalDateTime mCurrentDateInput;
+    private LocalDate mCurrentDateInput;
 
     // UI fields
     private RecyclerView mCompletedExerciseRV;
@@ -73,7 +73,7 @@ public class WorkoutAnotherDayFragment extends Fragment {
         if (getArguments() != null) {
             mCurrentDateInput = TypeConverters.stringToDate(getArguments().getString(MainActivity.DATE_INFO));
         }
-        NavArgument dateArgument = new NavArgument.Builder().setDefaultValue(TypeConverters.dateTimeToString(mCurrentDateInput)).build();
+        NavArgument dateArgument = new NavArgument.Builder().setDefaultValue(TypeConverters.dateToString(mCurrentDateInput)).build();
         if (getActivity() != null) {
             NavDestination navDestination = ((MainActivity)getActivity()).getNavController().getCurrentDestination();
             if (navDestination != null) {
@@ -125,7 +125,7 @@ public class WorkoutAnotherDayFragment extends Fragment {
                     CompletedExerciseItem currentCompletedExercise = mAdapter.getExerciseItem(position);
                     ArrayList<String> exerciseInfo = new ArrayList<>();
                     Bundle bundle = new Bundle();
-                    String dateInfo = TypeConverters.dateTimeToString(mCurrentDateInput);
+                    String dateInfo = TypeConverters.dateToString(mCurrentDateInput);
                     bundle.putString(MainActivity.DATE_INFO, dateInfo);
                     switch (currentCompletedExercise.getMExerciseType()) {
                         case CALISTHENICS:

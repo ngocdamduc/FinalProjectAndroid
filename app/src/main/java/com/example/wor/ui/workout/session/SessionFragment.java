@@ -33,7 +33,7 @@ import com.example.wor.room.TypeConverters;
 import com.example.wor.ui.workout.WorkoutViewModel;
 import com.google.android.material.appbar.MaterialToolbar;
 
-import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
     private static final String TAG = "SessionFragment";
 
     // Input fields
-    private LocalDateTime mCurrentDateInput;
+    private LocalDate mCurrentDateInput;
     private ExerciseType mExerciseTypeInput;
     private String mExerciseNameInput;
     private int mExerciseIdInput;
@@ -284,7 +284,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
 
             // Close keyboard when leaving fragment
             ((MainActivity) getActivity()).closeKeyboard();
-            if (mCurrentDateInput.equals(LocalDateTime.now())) {
+            if (mCurrentDateInput.equals(LocalDate.now())) {
                 Navigation.findNavController(view).popBackStack(R.id.navigation_to_workout_today, false);
             } else {
                 Navigation.findNavController(view).popBackStack(R.id.navigation_to_workout_another_day, false);

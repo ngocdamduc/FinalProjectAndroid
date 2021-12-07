@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +29,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.FormatStyle;
 
@@ -79,8 +77,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
         mHeightChart = root.findViewById(R.id.height_chart);
 
         // Set current date
-//        String formattedCurrentDate = LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
-        String formattedCurrentDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"+"\t"+ "HH:mm:ss"));
+        String formattedCurrentDate = LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
         currentDateTV.setText(formattedCurrentDate);
 
         // Setup app tool bar
@@ -105,8 +102,6 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
 
         // On click listeners
         mUpdateButton.setOnClickListener((View view) -> startDialogFragment());
-
-//        Toast.makeText(getActivity(), "alo", Toast.LENGTH_SHORT).show();
 
         // Observe live data
         mViewModel = new ViewModelProvider(this).get(StatsViewModel.class);
@@ -135,7 +130,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
 
             // Check and set data for today
             Stat lastEntry = stats.get(stats.size() - 1);
-            if (lastEntry.getMDate().isEqual(LocalDateTime.now())) {
+            if (lastEntry.getMDate().isEqual(LocalDate.now())) {
                 mShouldUpdate = true;
                 mWeightInput = lastEntry.getMWeight() + "";
                 if (lastEntry.getMWeight() != MainActivity.EMPTY) {
@@ -343,16 +338,11 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
         });
     }
     @Override
-    public void sendStat(int weight, int height, String date) {
+    public void sendStat(int weight, int height) {
         if (mShouldUpdate) {
-            mViewModel.update(new Stat(LocalDateTime.now(), weight, height));
-            MaterialTextView currentDateTV = getActivity().findViewById(R.id.stats_current_date_tv);
-            currentDateTV.setText(date);
-
+            mViewModel.update(new Stat(LocalDate.now(), weight, height));
         } else {
-            mViewModel.insert(new Stat(LocalDateTime.now(), weight, height));
-//            MaterialTextView currentDateTV = getActivity().findViewById(R.id.stats_current_date_tv);
-//            currentDateTV.setText(date);
+            mViewModel.insert(new Stat(LocalDate.now(), weight, height));
         }
     }
     // Other methods

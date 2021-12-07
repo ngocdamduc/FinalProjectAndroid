@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalDate;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class CompletedExerciseItem {
     private String mExerciseName;
 
     @ColumnInfo(name = "exercise_date")
-    private LocalDateTime mExerciseDate;
+    private LocalDate mExerciseDate;
 
     @ColumnInfo(name = "list_of_session")
     private List<Session> mListOfSessions;
@@ -39,7 +39,7 @@ public class CompletedExerciseItem {
     }
 
     // Constructor for completed exercises
-    public CompletedExerciseItem(ExerciseType type, String exerciseName, LocalDateTime exerciseDate, List<Session> listOfSessions, String note) {
+    public CompletedExerciseItem(ExerciseType type, String exerciseName, LocalDate exerciseDate, List<Session> listOfSessions, String note) {
         mExerciseType = type;
         mExerciseName = exerciseName;
         mExerciseDate= exerciseDate;
@@ -85,11 +85,11 @@ public class CompletedExerciseItem {
     }
 
 
-    public LocalDateTime getMExerciseDate() {
+    public LocalDate getMExerciseDate() {
         return mExerciseDate;
     }
 
-    public void setMExerciseDate(LocalDateTime exerciseDate) {
+    public void setMExerciseDate(LocalDate exerciseDate) {
         mExerciseDate = exerciseDate;
     }
 

@@ -13,7 +13,6 @@ import com.example.wor.room.CompletedExerciseItem;
 import com.example.wor.room.ExerciseType;
 
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
 
@@ -79,12 +78,12 @@ public class WorkoutViewModel extends AndroidViewModel {
         mRepository.delete(completedExerciseItem);
     }
 
-    public void deleteAllCompletedExerciseByDate(LocalDateTime date) {
+    public void deleteAllCompletedExerciseByDate(LocalDate date) {
         mRepository.deleteAllCompletedExerciseByDate(date); }
 
     public void deleteAllCompletedExercise() { mRepository.deleteAllCompletedExercises();}
 
-    public LiveData<List<CompletedExerciseItem>> getAllCompletedExercisesByDate(LocalDateTime date) {
+    public LiveData<List<CompletedExerciseItem>> getAllCompletedExercisesByDate(LocalDate date) {
         return mRepository.getAllCompletedExerciseByDate(date);
     }
 

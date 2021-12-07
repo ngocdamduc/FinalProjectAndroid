@@ -3,11 +3,9 @@ package com.example.wor.room;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalDateTime;
 
 @Entity(tableName = "stat_table")
 public class Stat {
@@ -16,7 +14,7 @@ public class Stat {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "stat_date")
-    private LocalDateTime mDate = LocalDateTime.now();
+    private LocalDate mDate = LocalDate.now();
 
     @ColumnInfo(name = "weight")
     private int mWeight;
@@ -25,23 +23,22 @@ public class Stat {
     private int mHeight;
 
     // Empty constructor
-    @Ignore
     public Stat() {
     }
 
     // General constructor
-    public Stat(@NonNull LocalDateTime date, int weight, int height) {
+    public Stat(@NonNull LocalDate date, int weight, int height) {
         mDate = date;
         mWeight = weight;
         mHeight = height;
     }
 
     // Getters and setters
-    public LocalDateTime getMDate() {
+    public LocalDate getMDate() {
         return mDate;
     }
 
-    public void setMDate(LocalDateTime mStatDate) {
+    public void setMDate(LocalDate mStatDate) {
         this.mDate = mStatDate;
     }
 
