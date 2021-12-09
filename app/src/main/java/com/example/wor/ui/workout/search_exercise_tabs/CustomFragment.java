@@ -103,18 +103,15 @@ public class CustomFragment extends Fragment {
         // On click listeners
         mAddCustomFAB.setOnClickListener((View view) -> {
             AddCustomDialogFragment addCustomFragment = AddCustomDialogFragment.newInstance(mExerciseTypeInput);
-            if (getFragmentManager() != null) {
-                addCustomFragment.show(getFragmentManager(), "add_custom");
-            } else {
-                Log.e(TAG, "startDialogFragment: Could not get reference to fragment manager");
-            }
+            requireActivity().getSupportFragmentManager();
+            addCustomFragment.show(requireActivity().getSupportFragmentManager(), "add_custom");
         });
         return root;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Setup adaptor
         mAvailableExerciseRV.setLayoutManager(new LinearLayoutManager(getContext()));
         mAvailableExerciseRV.setHasFixedSize(true);
@@ -197,7 +194,6 @@ public class CustomFragment extends Fragment {
             }
         });
     }
-
     // Setup action mode
     private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override

@@ -113,8 +113,8 @@ public class WorkoutAnotherDayFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Setup adaptor
         mCompletedExerciseRV.setLayoutManager(new LinearLayoutManager(getContext()));
         mCompletedExerciseRV.setHasFixedSize(true);
@@ -192,7 +192,6 @@ public class WorkoutAnotherDayFragment extends Fragment {
             mAdapter.submitList(completedExerciseItems);
         });
     }
-
     // Setup action mode
     private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override

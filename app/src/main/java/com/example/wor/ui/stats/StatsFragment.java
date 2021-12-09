@@ -35,6 +35,7 @@ import org.threeten.bp.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class StatsFragment extends Fragment implements AddStatDialogFragment.StatListener {
 
@@ -94,15 +95,12 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
         }
         return root;
     }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // On click listeners
-        mUpdateButton.setOnClickListener((View view) -> startDialogFragment());
-
+        mUpdateButton.setOnClickListener((View view1) -> startDialogFragment());
         // Observe live data
         mViewModel = new ViewModelProvider(this).get(StatsViewModel.class);
         mViewModel.getAllStats().observe(getViewLifecycleOwner(), (List<Stat> stats) -> {
@@ -350,10 +348,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
     private void startDialogFragment() {
         AddStatDialogFragment addStatDialogFragment = AddStatDialogFragment.newInstance(Integer.parseInt(mWeightInput), Integer.parseInt(mHeightInput));
         addStatDialogFragment.setTargetFragment(this, 1);
-        if (getFragmentManager() != null) {
-            addStatDialogFragment.show(getFragmentManager(), "Update Stats");
-        } else {
-            Log.e(TAG, "startDialogFragment: Could not get reference to fragment manager");
-        }
+        requireActivity().getSupportFragmentManager();
+        addStatDialogFragment.show(requireFragmentManager(), "Update Stats");
     }
 }

@@ -125,7 +125,6 @@ public class AddStatDialogFragment extends AppCompatDialogFragment {
         super.onDetach();
         mListener = null;
     }
-
     // Note listener interface
     public interface StatListener {
         void sendStat(int weight, int height);

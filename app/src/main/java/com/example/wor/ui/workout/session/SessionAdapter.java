@@ -246,9 +246,7 @@ public class SessionAdapter extends ListAdapter<Session, SessionAdapter.SessionH
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
         }
-
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             if (charSequence.length() == 0) {

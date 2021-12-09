@@ -20,7 +20,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:hint="@string/weight"
+            android:hint="@string/Weight"
             app:hintTextAppearance="@style/open_sans_body2">
 
             <com.google.android.material.textfield.TextInputEditText

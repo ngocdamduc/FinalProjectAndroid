@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.workout.search_exercise_tabs.BrowseFragment">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/browse_exercise_list_rv"
         android:layout_width="match_parent"
@@ -18,5 +17,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_available_exercise" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

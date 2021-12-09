@@ -11,13 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wor.R;
 import com.example.wor.room.AvailableExerciseItem;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem, AvailableExerciseAdapter.AvailableExerciseHolder> implements Filterable {
 
     // Adaptor fields
@@ -29,7 +29,6 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
         super(DIFF_CALLBACK);
         mListener = listener;
     }
-
     private static final DiffUtil.ItemCallback<AvailableExerciseItem> DIFF_CALLBACK= new DiffUtil.ItemCallback<>() {
         @Override
         public boolean areItemsTheSame(@NonNull AvailableExerciseItem oldItem, @NonNull AvailableExerciseItem newItem) {
@@ -41,9 +40,7 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
             return oldItem.getMExerciseName().equals(newItem.getMExerciseName()) && oldItem.isChecked() == newItem.isChecked();
         }
     };
-
     class AvailableExerciseHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-
         // View holder fields
         private final TextView mAvailableExerciseName;
         private final ImageView mAvailableExerciseFavorite;
@@ -73,7 +70,6 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
             return false;
         }
     }
-
     @NonNull
     @Override
     public AvailableExerciseAdapter.AvailableExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -96,21 +92,17 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
             holder.mAvailableExerciseFavorite.setImageResource(R.drawable.ic_favorite_unpressed);
         }
     }
-
     @Override
     public int getItemCount() {
         return getCurrentList().size();
     }
-
     // Other adapter methods
     AvailableExerciseItem getExerciseItem(int position) {
         return getItem(position);
     }
-
     void setFullList(List<AvailableExerciseItem> fullList) {
         mAvailableExerciseItemsFull = fullList;
     }
-
     // Search filter methods
     @Override
     public Filter getFilter() {
@@ -151,7 +143,6 @@ public class AvailableExerciseAdapter extends ListAdapter<AvailableExerciseItem,
             submitList(filteredList);
         }
     };
-
     // On click interface
     public interface OnItemClickListener {
         void onClick(View view, int position);

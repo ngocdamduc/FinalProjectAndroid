@@ -84,8 +84,8 @@ public class BrowseFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Setup adaptor
         mAvailableExerciseRV.setLayoutManager(new LinearLayoutManager(getContext()));
         mAvailableExerciseRV.setHasFixedSize(true);
@@ -126,7 +126,6 @@ public class BrowseFragment extends Fragment {
             mAdapter.submitList(availableExerciseItems);
         });
     }
-
     // Setup menu options
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {

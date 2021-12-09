@@ -113,9 +113,9 @@ public class CompletedExerciseAdapter extends ListAdapter<CompletedExerciseItem,
             for (int i=0; i<listOfSessions.size(); i++) {
                 String repOrReps = (listOfSessions.get(i).getReps() == 1) ? " rep x " : " reps x ";
                 if (i == listOfSessions.size() -1) {
-                    currentInfo = listOfSessions.get(i).getReps() + repOrReps + listOfSessions.get(i).getWeight()+" lbs.";
+                    currentInfo = listOfSessions.get(i).getReps() + repOrReps + listOfSessions.get(i).getWeight()+" kg.";
                 } else {
-                    currentInfo = listOfSessions.get(i).getReps() + repOrReps + listOfSessions.get(i).getWeight() + " lbs, ";
+                    currentInfo = listOfSessions.get(i).getReps() + repOrReps + listOfSessions.get(i).getWeight() + " kg, ";
                 }
                 description.append(currentInfo);
             }

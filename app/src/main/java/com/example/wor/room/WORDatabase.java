@@ -42,7 +42,6 @@ public abstract class WORDatabase extends RoomDatabase {
             new PopulateDbAsyncTask(sInstance).execute();
         }
     };
-
     // Initial available exercise items in the database
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private final AvailableExerciseDao mAvailableExerciseDao;

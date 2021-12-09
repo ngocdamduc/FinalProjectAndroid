@@ -20,6 +20,7 @@
     <string name="body_weight_w_units">Body Weight (kg)</string>
     <string name="height_w_units">Height (m)</string>
     <string name="Height">Height (cm)</string>
+    <string name="Weight">Weight(kg)</string>
     <!-- Calendar Fragment -->
     <string name="sun">SUN</string>
     <string name="mon">MON</string>

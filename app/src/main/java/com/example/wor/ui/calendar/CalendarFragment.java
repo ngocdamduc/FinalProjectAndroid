@@ -145,8 +145,8 @@ public class CalendarFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Observe live data
         WorkoutViewModel mViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
         mViewModel.getAllCompletedExercises().observe(getViewLifecycleOwner(), (List<CompletedExerciseItem> completedExerciseItems) -> {
@@ -156,5 +156,4 @@ public class CalendarFragment extends Fragment {
             mCalendarView.notifyCalendarChanged();
         });
     }
-    // Other methods
 }

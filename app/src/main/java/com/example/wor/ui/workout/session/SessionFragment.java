@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.wor.MainActivity;
 import com.example.wor.R;
 import com.example.wor.room.CompletedExerciseItem;
@@ -37,6 +38,7 @@ import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SessionFragment extends Fragment implements NoteDialogFragment.NoteListener {
 
@@ -147,12 +149,12 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Setup adaptor
         mSessionRV.setLayoutManager(new LinearLayoutManager(getContext()));
         mSessionRV.setHasFixedSize(true);
-        mAdapter = new SessionAdapter(mExerciseTypeInput, (View view, int position) -> {
+        mAdapter = new SessionAdapter(mExerciseTypeInput, (View view1, int position) -> {
 
             // Checkable cards ui
             if (mActionMode == null) {
@@ -209,7 +211,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
         if (getActivity() != null) ((MainActivity) getActivity()).showKeyboard();
 
         // On click listeners
-        mNewSessionButton.setOnClickListener((View view) -> {
+        mNewSessionButton.setOnClickListener((View view1) -> {
             mAdapter.mOnNewSession = true;
             List<Session> newSessionList = new ArrayList<>();
             for (Session session : mAdapter.getCurrentList()) {
@@ -230,7 +232,7 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
             // Open keyboard and focus on new set
             ((MainActivity) getActivity()).showKeyboard();
         });
-        mSaveButton.setOnClickListener((View view) -> {
+        mSaveButton.setOnClickListener((View view1) -> {
             List<Session> currentListOfSessions = mAdapter.getCurrentList();
             boolean showError = false;
             switch (mExerciseTypeInput) {
@@ -292,7 +294,6 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
 
         });
     }
-
     // Setup action mode
     private final ActionMode.Callback mActionModeCallBack = new ActionMode.Callback() {
         @Override
@@ -396,15 +397,11 @@ public class SessionFragment extends Fragment implements NoteDialogFragment.Note
         if (item.getItemId() == R.id.note_menu_item) {
             NoteDialogFragment noteDialogFragment = NoteDialogFragment.newInstance(mExerciseNoteInput);
             noteDialogFragment.setTargetFragment(this, 1);
-            if (getFragmentManager() != null) {
-                noteDialogFragment.show(getFragmentManager(), "Update Note");
-            } else {
-                Log.e(TAG, "onOptionsItemSelected: Could not get reference to fragment manager");
-            }
+            requireActivity().getSupportFragmentManager();
+            noteDialogFragment.show(requireFragmentManager(), "Update Note");
         }
         return true;
     }
-
     // Note listener
     @Override
     public void sendNote(String note) {
