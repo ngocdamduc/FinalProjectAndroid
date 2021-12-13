@@ -135,7 +135,7 @@ public class CustomFragment extends Fragment {
                     } else if (view.getId() == R.id.available_exercise_favorite_iv) {
                         currentAvailableExercise.setFavorite(!currentAvailableExercise.isFavorite());
                         mViewModel.update(currentAvailableExercise);
-                        mAdapter.notifyDataSetChanged();
+                        mAdapter.notifyItemChanged(position);
                     }
                 }
             }

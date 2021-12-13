@@ -30,6 +30,7 @@
         <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/layout/item_strength_session_set.xml" value="0.2957427536231884" />
         <entry key="..\:/Android/FinalProjectAndroid/app/src/main/res/mipmap-anydpi-v26/ic_app.xml" value="0.125" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/drawable-v24/ic_delete.xml" value="0.25416666666666665" />
+        <entry key="..\:/FinalProjectAndroid/app/src/main/res/drawable/today_grid_background.xml" value="0.25025641025641027" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/layout/activity_splash.xml" value="0.23802083333333332" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/layout/activity_stats_acivity.xml" value="0.23802083333333332" />
@@ -58,6 +59,7 @@
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/layout/item_strength_session_set.xml" value="0.23802083333333332" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/FinalProjectAndroid/app/src/main/res/menu/delete_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/FinalProjectAndroid/app/src/main/res/menu/search_exercise_menu.xml" value="0.22314814814814815" />
         <entry key="..\:/Users/Administrator/Desktop/FinalProjectAndroid/app/src/main/res/drawable/ic_baseline_arrow_drop_down_circle_24.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/FinalProjectAndroid/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/FinalProjectAndroid/app/src/main/res/drawable/view_style_1.xml" value="0.1" />

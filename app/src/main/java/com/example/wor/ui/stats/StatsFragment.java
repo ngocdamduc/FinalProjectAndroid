@@ -35,8 +35,6 @@ import org.threeten.bp.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
-
 public class StatsFragment extends Fragment implements AddStatDialogFragment.StatListener {
 
     // Static fields
@@ -279,7 +277,7 @@ public class StatsFragment extends Fragment implements AddStatDialogFragment.Sta
                 heightLineDataSet.setCircleRadius(4f);
 
                 // Create list of data with line data sets
-                List<ILineDataSet> heightListOfData = new ArrayList<>();
+                List<ILineDataSet>  heightListOfData = new ArrayList<>();
                 heightListOfData.add(heightLineDataSet);
 
                 // Create line data
