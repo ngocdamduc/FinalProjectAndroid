@@ -38,7 +38,6 @@ import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SessionFragment extends Fragment implements NoteDialogFragment.NoteListener {
 
